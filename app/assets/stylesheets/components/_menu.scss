@@ -1,7 +1,18 @@
 .menu-items {
   width: 100%;
-  padding: 16px;
+  padding: 32px;
   background-color: hsla(216, 21%, 15%, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.menu-category {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 16px;
+
 }
 
 .menu li {
