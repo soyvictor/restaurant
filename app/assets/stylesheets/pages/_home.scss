@@ -65,10 +65,14 @@
   list-style: none;
 }
 
+.google-map {
+  flex-grow: 1;
+}
+
 .restaurant-details {
   // border: 1px solid red;
   width: 10%;
-  flex-grow: 1;
+  flex-grow: 3;
 }
 
 .restaurant-details li {
