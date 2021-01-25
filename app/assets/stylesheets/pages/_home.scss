@@ -1,18 +1,8 @@
 // Specific CSS for your home-page
-html, * {
-  margin: 0;
-  padding: 0;
-  color: black;
-}
-
-a, a:hover, a:visited {
-  color: black;
-  cursor: pointer;
-  text-decoration: none;
-}
 
 .info {
   text-align: center;
+  padding: 5rem 0;
 }
 
 .banner-container {
@@ -40,32 +30,48 @@ a, a:hover, a:visited {
   text-shadow: 3px 3px 1px black;
 }
 
-.info {
-  padding: 5rem 0;
-}
-
 .contact {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 0 32px 0;
 }
 
 .fa-shopping-basket {
   font-size: 1.6rem;
 }
 
-.container {
-  width: 90%;
-  margin: 0 auto;
-}
-
 .about {
-  text-align: center;
+  // background-color: grey;
+  text-align: left;
 }
 
 .contact-text {
-  width: 50%;
+  height: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
+  // border: 1px solid blue;
 }
+
+.contact-text ul {
+  margin: 0;
+  padding: 0;
+}
+
+.contact-text li {
+  list-style: none;
+}
+
+.restaurant-details {
+  // border: 1px solid red;
+  width: 10%;
+  flex-grow: 1;
+}
+
+.restaurant-details li {
+  list-style: none;
+}
+

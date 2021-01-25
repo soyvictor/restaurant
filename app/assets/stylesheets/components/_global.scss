@@ -1,0 +1,16 @@
+html, * {
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+a, a:hover, a:visited {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.container {
+  width: 95%;
+  margin: 48px auto 0;
+}
