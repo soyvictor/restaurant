@@ -7,3 +7,32 @@ html, * {
 a {
   cursor: pointer;
 }
+
+.info {
+  text-align: center;
+}
+
+.banner-container {
+  background-color: rgba(72, 24, 24, 1.00);
+  width: 50%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.banner-container p {
+  color: white;
+
+}
+
+.banner-container p.banner-heading {
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+  display: inline-block;
+  font-size: 4rem;
+  color: white;
+  text-shadow: 4px 4px 1px black;
+}
