@@ -2,7 +2,6 @@
 const foodItem = document.querySelector('.testItem');
 const modal = document.querySelector('.modal');
 
-
 function openModal() {
     console.info('Opening Modal...');
     // First check if the modal is already open
@@ -30,6 +29,6 @@ function openModal() {
   }
 
 
-// These our event listeners
+// These are our event listeners
 foodItem.addEventListener('click', openModal);
 modal.addEventListener('click', handleClickOutside);
