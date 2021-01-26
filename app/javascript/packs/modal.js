@@ -2,6 +2,15 @@
 const foodItem = document.querySelector('.testItem');
 const modal = document.querySelector('.modal');
 const mainContent = document.querySelector('body');
+const minusQuantity = document.querySelector('.minus-quantity');
+const plusQuantity = document.querySelector('.plus-quantity');
+const quantityOutside = document.querySelector('.quantity-outside');
+const quantityOutsideInteger = parseInt(quantityOutside.innerText, 10);
+console.log(quantityOutside);
+
+// const quantity = document.querySelector('.quantity');
+const modalSubmitButtonValue = document.querySelector('.modal-button').getAttribute("value");
+console.log(modalSubmitButtonValue);
 
 function openModal() {
     console.info('Opening Modal...');
@@ -33,7 +42,15 @@ function openModal() {
     }
   }
 
+  function changeQuantity(direction) {
+    if (direction === 'plus') {
+      quantityOutside.innerText = 2
+    }
+  }
+
 
 // These are our event listeners
 foodItem.addEventListener('click', openModal);
 modal.addEventListener('click', handleClickOutside);
+minusQuantity.addEventListener('click', () => changeQuantity('minus'));
+plusQuantity.addEventListener('click', () => changeQuantity('plus'));

@@ -99,8 +99,10 @@
 }
 
 .options h5 {
-  line-height: 4rem;
+  width: 100%;
+  line-height: 3.2rem;
   margin-bottom: 0;
+  display: inline-block;
 }
 
 
@@ -172,8 +174,21 @@ body.closed {
 .counter {
   padding: 0 1rem;
 }
-.counter p {
+
+.counterText {
   font-size: 2rem;
   margin: 0;
+}
+
+.special-notes {
+  width: 90%;
+  height: 100px;
+  margin: 0 auto;
+  padding-top: 8px;
+  padding-left: 24px;
+}
+
+.minus-quantity, .plus-quantity {
+  cursor: pointer;
 }
 
