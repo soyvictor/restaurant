@@ -15,5 +15,21 @@ function openModal() {
     // Event listeners to be bound when we open the modal.
   }
 
+  function closeModal() {
+    modal.classList.remove('open');
+    // TODO: add event listeners for clicks and keyboard...
+    window.removeEventListener('keyup', handleKeyUp);
+    nextButton.removeEventListener('click', showNextImage);
+    prevButton.removeEventListener('click', showPrevImage);
+  }
 
+  function handleClickOutside(e) {
+    if(e.target === e.currentTarget) {
+      closeModal();
+    }
+  }
+
+
+// These our event listeners
 foodItem.addEventListener('click', openModal);
+modal.addEventListener('click', handleClickOutside);

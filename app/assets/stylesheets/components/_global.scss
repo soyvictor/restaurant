@@ -10,7 +10,7 @@ a, a:hover, a:visited {
   text-decoration: none;
 }
 
-.main-container {
+.regular-container {
   width: 80%;
   padding: 0;
   margin: 48px auto 0 auto;
@@ -20,13 +20,3 @@ a, a:hover, a:visited {
   position: relative
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.example::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.example {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
