@@ -13,3 +13,112 @@
   opacity: 1;
   // transition: opacity 0.3s;
 }
+
+
+
+// beginning wesbos code
+.modal-close-button {
+  position: absolute;
+  right: 0;
+  top: -14px;
+  right: -14px;
+  z-index: 1000;
+  font-size: 22px;
+  color: black;
+  border: 3px solid white;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.modal-close-button:hover {
+  cursor: pointer;
+}
+
+.modalInner {
+  position: relative;
+  z-index: 10000;
+  border-radius: 3px;
+  background: white;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+  // transform: translateY(-100vh);
+  // transition: all 0.5s;
+  width: 40vw;
+  height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: black;
+  // margin: 3rem;
+}
+
+.modal img {
+  height: 100px;
+  width: 200px;
+}
+
+.modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal figcaption {
+  padding: 10px;
+}
+
+.modal h2 {
+  color: black;
+}
+
+.modal.open .modalInner {
+  // transform: translateY(0);
+}
+
+.top-level {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  // left: 0;
+  background: white;
+  font-size: 13px;
+  display: grid;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+  opacity: 1;
+  color: black;
+  padding: 2px;
+}
+
+
+// wesbos base css button styling.
+
+a.button, button, input[type="button"] {
+  color: rgba(85, 87, 90, 1.00);
+  background: white;
+  padding: 1rem;
+  border: 0;
+  // border: 2px solid transparent;
+  text-decoration: none;
+  font-weight: 600;
+  font-size:2rem;
+  outline: none;
+}
+
+button:hover {
+  color: #302D2C;
+  font-weight: bold;
+}
+
+// firefox and all settings
+* {
+  outline: none;
+}
+
+a:active,
+a:focus {
+    -moz-outline-style: none;
+}
+// chrome setting here
+button:focus {outline:0;}
+
