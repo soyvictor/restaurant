@@ -1,6 +1,7 @@
 // Selectors
 const foodItem = document.querySelector('.testItem');
 const modal = document.querySelector('.modal');
+const mainContent = document.querySelector('body');
 
 function openModal() {
     console.info('Opening Modal...');
@@ -11,15 +12,19 @@ function openModal() {
     }
     modal.classList.add('open');
 
+    mainContent.classList.add('closed');
+
     // Event listeners to be bound when we open the modal.
   }
 
   function closeModal() {
+    mainContent.classList.remove('closed');
     modal.classList.remove('open');
     // TODO: add event listeners for clicks and keyboard...
     window.removeEventListener('keyup', handleKeyUp);
     nextButton.removeEventListener('click', showNextImage);
     prevButton.removeEventListener('click', showPrevImage);
+
   }
 
   function handleClickOutside(e) {
