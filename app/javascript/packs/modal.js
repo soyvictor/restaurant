@@ -6,10 +6,8 @@ const minusQuantity = document.querySelector('.minus-quantity');
 const plusQuantity = document.querySelector('.plus-quantity');
 const quantityOutside = document.querySelector('.quantity-outside');
 const quantityOutsideInteger = parseInt(quantityOutside.innerText, 10);
-console.log(quantityOutside);
-
-// const quantity = document.querySelector('.quantity');
-const modalSubmitButtonValue = document.querySelector('.modal-button').getAttribute("value");
+let counter = 1;
+const modalSubmitButtonValue = document.querySelector('.modal-button');
 console.log(modalSubmitButtonValue);
 
 function openModal() {
@@ -42,9 +40,19 @@ function openModal() {
     }
   }
 
+  function updateButtonText() {
+    modalSubmitButtonValue.setAttribute("value", `Add ${counter} to Order`)
+  }
+
   function changeQuantity(direction) {
     if (direction === 'plus') {
-      quantityOutside.innerText = 2
+      counter += 1;
+      quantityOutside.innerText = counter;
+      updateButtonText();
+    } else {
+      counter -= 1;
+      quantityOutside.innerText = counter;
+      updateButtonText();
     }
   }
 
