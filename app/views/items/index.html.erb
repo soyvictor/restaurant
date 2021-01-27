@@ -1,0 +1,174 @@
+<div class="main-content">
+
+  <div class="banner-container">
+    <p class="banner-heading">Tortas Mr. Elorduy</p>
+    <p>Tortas and Hamburgers</p>
+  </div>
+
+  <div class="regular-container">
+    <div class="info">
+      <p>WE SERVE TORTAS AND HAMBURGERS.</p>
+      <p>SOME OF OUR FOOD MAY CONTAIN NUTS. PLEASE CALL BEFORE ORDERING IF YOU HAVE ALLERGY CONCERNS.</p>
+      <p>ONLINE ORDERING FOR PICK UP OR DELIVERY IS AVAILABLE FROM 11:00 AM - 2:30 PM FOR LUNCH AND 5:00 PM - 10:00 PM FOR DINNER.</p>
+    </div>
+  </div>
+
+  <div class="regular-container">
+    <div class="menu">
+      <h3 id="order">MENU</h3>
+
+        <div class="menu-items">
+          <% @categories.each do |category| %>
+            <div class="test-category menu-category">
+              <h5><strong><%= category.name %></strong></h5>
+              <ul>
+                <% category.items.each do |item| %>
+                <li><a><%= item.name %></a></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+        <div class="tortas menu-category">
+          <h5><strong>TORTAS</strong></h5>
+          <ul>
+            <li><a class="testItem">Torta de pierna</a></li>
+            <li><a>Torta de pollo</a></li>
+            <li><a>Torta de milanesa</a></li>
+            <li><a>Torta de chuleta</a></li>
+            <li><a>Torta de chuleta</a></li>
+            <li><a>Torta de bistec</a></li>
+            <li><a>Torta de milanesa de pollo</a></li>
+            <li><a>Torta de milanesa de pollo con queso</a></li>
+          </ul>
+        </div>
+
+        <div class="hamburugesas menu-category">
+          <h5><strong>HAMBURGUESAS</strong></h5>
+          <ul>
+            <li><a>Hamburguesa con queso amarillo</a></li>
+            <li><a>Hamburguesa con quesillo</a></li>
+            <li><a>Hamburguesa con jamón y queso amarillo</a></li>
+            <li><a>Hamburgusa con tocino y queso amarillo</a></li>
+            <li><a>Hamburguesa con piña y quesillo</a></li>
+            <li><a>Hamburguesa Hawaina</a></li>
+            <li><a>Hamburguesa doble carne con queso</a></li>
+          </ul>
+        </div>
+
+        <div class="sides menu-category">
+          <h5><strong>SIDES</strong></h5>
+          <ul>
+            <li><a>Papas</a></li>
+            <li><a>Papas fritos</a></li>
+            <li><a>Macaroni</a></li>
+            <li><a>Bread sticks</a></li>
+          </ul>
+        </div>
+
+        <div class="bebidas menu-category">
+          <h5><strong>BEBIDAS</strong></h5>
+          <ul>
+            <li><a>Refresco</a></li>
+            <li><a>Cerveza</a></li>
+            <li><a>Agua fresca</a></li>
+            <li><a>Horchata</a></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="regular-container">
+    <div class="about">
+      <h3 id="about-us">ABOUT US</h3>
+      <p>Enrique Olvera abrió Pujol en la ciudad de México en el 2000. Su cocina siempre está transformándose; abreva ideas de aquí y de allá, reinterpreta y evoluciona, pero tiene las raíces puestas en los ingredientes y las técnicas mexicanas de todos los tiempos.</p>
+    </div>
+  </div>
+
+  <div class="regular-container">
+    <h3 id="contact">CONTACT</h3>
+    <div class="contact">
+      <div class="contact-text">
+        <div>
+          Aquiles Elorduy 5,<br>
+          Nextengo, Azcapotzalco,<br>
+          C.P. 02070,<br>
+          CDMX, México
+        </div>
+        <div>
+          T. (55) 8848 - 8854
+          <br>
+          info@mrtortas.com.mx
+        </div>
+        <ul>
+          <li><a href="">FACEBOOK</a></li>
+          <li><a href="">INSTAGRAM</a></li>
+          <li><a href="">TWITTER</a></li>
+        </ul>
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.5651692281685!2d-99.18990558509269!3d19.474305786860555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f881ae24c297%3A0x51636fc99ab5714d!2sTortas%20Mr.%20Elorduy!5e0!3m2!1sen!2sus!4v1611542445038!5m2!1sen!2sus" width="400" height="300" frameborder="0" style="border:0; padding: 0 32px" allowfullscreen="" aria-hidden="false" tabindex="0" class="google-map"></iframe>
+      <div class="restaurant-details">
+        <ul>
+          <li><strong>Hours</strong></li>
+          <ul style="margin-bottom: 1rem;">
+            <li>Monday    Closed</li>
+            <li>Tuesday    10-6PM</li>
+            <li>Wednesday    10-6PM</li>
+            <li>Thursday    10-6PM</li>
+            <li>Friday    10-6PM</li>
+            <li>Saturday    10-6PM</li>
+            <li>Sunday    10-6PM</li>
+          </ul>
+          <li><strong>Accepted payments: </strong>We accept visa and mastercard</li>
+          <li><strong>Parking: </strong>Street parking is available and garage parking is available at Av. Azcapotzalco 417</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal open">
+  <div class="modalInner">
+    <img src="https://cdn.shopify.com/s/files/1/0023/0922/6566/products/Torta_de_pierna_2_1024x1024.jpg?v=1539568978" alt="no image found">
+    <h2 style="padding: 24px; padding-bottom: 0px;">Torta de pierna</h2>
+    <p style="padding: 24px; padding-top: 2px;">Orden de 4 tacos en tortillas de maíz</p>
+    <div class="options">
+      <h5>Options</h5>
+    </div>
+    <div style="width: 100%;">
+      <form action="" style="width: 100%">
+        <div style="padding: 24px; padding-top: 16px;">
+          <input id="con-todo" type="checkbox" name="options" value="con todo">
+          <label for="con-todo">con todo</label>
+          <br>
+          <input id="salsa-chipotle" type="checkbox" name="options" value="salsa chipotle">
+          <label for="con-todo">salsa chipotle</label>
+          <br>
+          <input id="rajas" type="checkbox" name="options" value="rajas">
+          <label for="con-todo">rajas</label>
+        </div>
+        <div class="options">
+          <h5>Special Instructions</h5>
+        </div>
+        <textarea class="special-notes" name="options" placeholder="Add a note" style="border: none;"></textarea>
+        <div class="add-to-cart">
+          <div class="counter">
+            <span><i class="far fa-minus-square counterText minus-quantity"  style="padding-right: 4px;"></i></span><span class=" counterText quantity-outside" style="display: inline-block; width: 32px; text-align: center;">1</span><span style="padding-left: 4px;"><i class="far fa-plus-square counterText plus-quantity"></i></span>
+          </div>
+          <input type="submit" class="modal-button" value='Add 1 to Order'>
+        </div>
+      </form>
+    </div>
+    <!-- <i class="fas fa-times-circle modal-close-button"></i> -->
+  </div>
+</div>
+
+
+
+
+
+<%= javascript_pack_tag 'modal' %>
