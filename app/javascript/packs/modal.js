@@ -50,12 +50,15 @@ function openModal() {
       quantityOutside.innerText = counter;
       updateButtonText();
     } else {
+      if (counter === 1) {
+        return;
+      } else {
       counter -= 1;
       quantityOutside.innerText = counter;
       updateButtonText();
+      }
     }
   }
-
 
 // These are our event listeners
 foodItem.addEventListener('click', openModal);
