@@ -68,7 +68,8 @@ function openModal() {
 
     // update the modal with this info
     // const image = el.querySelector('img');
-    const source = `http://res.cloudinary.com/vc334/image/upload/${el.dataset.photo}`;
+    // const source = `http://res.cloudinary.com/vc334/image/upload/${el.dataset.photo}`;
+    const source = 'https://cdn.shopify.com/s/files/1/0023/0922/6566/products/Torta_de_pierna_2_1024x1024.jpg?v=1539568978';
     modal.querySelector('img').src = source
     modal.querySelector('h2').textContent = el.dataset.name;
     modal.querySelector('p').textContent = el.dataset.description;

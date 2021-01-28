@@ -15,7 +15,7 @@ torta = Category.create!(name: 'torta', user: User.first)
 bebida = Category.create!(name: 'bebida', user: User.first)
 
 puts 'Creating items...'
-Item.create!(category: torta, name: 'torta de pierna', description: 'Orden de 4 tacos en tortillas de maíz', user: User.first)
-Item.create!(category: bebida, name: 'coca cola', description: 'A popular and nice refreshing soda', user: User.first)
+Item.create!(category: torta, name: 'torta de pierna', description: 'Orden de 4 tacos en tortillas de maíz', price: 20, user: User.first)
+Item.create!(category: bebida, name: 'coca cola', description: 'A popular and nice refreshing soda', price: 22, user: User.first)
 
 puts 'Finished!'
