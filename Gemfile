@@ -63,3 +63,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Victor added
 gem 'dotenv-rails', groups: [:development, :test]
+# Victor added
+gem 'cloudinary', '~> 1.16.0'

@@ -4,6 +4,7 @@
       <%= simple_form_for [@item] do |f| %>
         <%= f.input :name, label: 'Item Name', input_html: { class: 'search-fields' }  %>
         <%= f.input :description, input_html: { class: 'search-fields' } %>
+        <%= f.input :photo, as: :file %>
       <div class="mb-5">
       <%= f.submit "Add item", class: "btn search-button-styled mt-2 form-control", style: "width: 100%;" %>
       </div>
