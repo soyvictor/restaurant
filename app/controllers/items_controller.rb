@@ -9,12 +9,17 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @categories = Category.all
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = Item.new
+    @item.name = item_params[:name]
+    @item.description = item_params[:description]
+    @item.photo = item_params[:photo]
     @item.user = current_user
-    @item.category = Category.first
+    # @item.category = Category.first
+    @item.category = Category.find(item_params[:category])
     if @item.save
       redirect_to root_path
     else
@@ -32,7 +37,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :photo)
+    params.require(:item).permit(:name, :description, :category, :photo)
   end
 
   def find_item
