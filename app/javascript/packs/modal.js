@@ -9,6 +9,7 @@ const quantityOutsideInteger = parseInt(quantityOutside.innerText, 10);
 let counter = 1;
 const modalSubmitButtonValue = document.querySelector('.modal-button');
 const items = document.querySelectorAll('.item');
+const buttonPrice = document.querySelector('.button-price');
 
 function openModal() {
     console.info('Opening Modal...');
@@ -73,6 +74,7 @@ function openModal() {
     modal.querySelector('img').src = source
     modal.querySelector('h2').textContent = el.dataset.name;
     modal.querySelector('p').textContent = el.dataset.description;
+    buttonPrice.innerText = el.dataset.price;
     currentItem = el;
     openModal();
 

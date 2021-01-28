@@ -23,7 +23,7 @@
               <h5><strong><%= category.name %></strong></h5>
               <ul>
                 <% category.items.each do |item| %>
-                <li><a class="item" data-name="<%= item.name %>" data-description="<%= item.description %>"><%= item.name %><%= humanized_money_with_symbol(item.price) %></a></li>
+                <li><a class="item" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money_with_symbol(item.price) %>"><%= item.name %></a></li>
                 <% end %>
               </ul>
             </div>
@@ -136,6 +136,7 @@
     <img src="https://cdn.shopify.com/s/files/1/0023/0922/6566/products/Torta_de_pierna_2_1024x1024.jpg?v=1539568978" alt="no image found">
     <h2 style="padding: 24px; padding-bottom: 0px;">Torta de pierna</h2>
     <p style="padding: 24px; padding-top: 2px;">Orden de 4 tacos en tortillas de maíz</p>
+    <p style="padding: 24px; padding-top: 2px;" class="button-price">Orden de 4 tacos en tortillas de maíz</p>
     <div class="options">
       <h5>Options</h5>
     </div>
