@@ -23,7 +23,7 @@
               <h5><strong><%= category.name %></strong></h5>
               <ul>
                 <% category.items.each do |item| %>
-                <li><a><%= item.name %></a></li>
+                <li><a class="item" data-name="<%= item.name %>" data-description="<%= item.description %>"><%= item.name %></a></li>
                 <% end %>
               </ul>
             </div>
@@ -131,7 +131,7 @@
   </div>
 </div>
 
-<div class="modal open">
+<div class="modal">
   <div class="modalInner">
     <img src="https://cdn.shopify.com/s/files/1/0023/0922/6566/products/Torta_de_pierna_2_1024x1024.jpg?v=1539568978" alt="no image found">
     <h2 style="padding: 24px; padding-bottom: 0px;">Torta de pierna</h2>

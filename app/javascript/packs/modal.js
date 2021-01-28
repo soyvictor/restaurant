@@ -8,7 +8,7 @@ const quantityOutside = document.querySelector('.quantity-outside');
 const quantityOutsideInteger = parseInt(quantityOutside.innerText, 10);
 let counter = 1;
 const modalSubmitButtonValue = document.querySelector('.modal-button');
-console.log(modalSubmitButtonValue);
+const items = document.querySelectorAll('.item');
 
 function openModal() {
     console.info('Opening Modal...');
@@ -60,8 +60,28 @@ function openModal() {
     }
   }
 
+  function showItem(el) {
+    if(!el) {
+      console.info('item');
+      return
+    }
+
+    // update the modal with this info
+    // const image = el.querySelector('img');
+    const source = "https://cdn.shopify.com/s/files/1/0023/0922/6566/products/Torta_de_pierna_2_1024x1024.jpg?v=1539568978";
+
+    modal.querySelector('img').src = source
+    modal.querySelector('h2').textContent = el.dataset.name;
+    modal.querySelector('p').textContent = el.dataset.description;
+    currentItem = el;
+    openModal();
+
+  }
+
+
 // These are our event listeners
 foodItem.addEventListener('click', openModal);
 modal.addEventListener('click', handleClickOutside);
 minusQuantity.addEventListener('click', () => changeQuantity('minus'));
 plusQuantity.addEventListener('click', () => changeQuantity('plus'));
+items.forEach(image => image.addEventListener('click', (e) => showItem(e.currentTarget)));
