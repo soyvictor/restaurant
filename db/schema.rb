@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_195511) do
+ActiveRecord::Schema.define(version: 2021_01_28_201121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 2021_01_28_195511) do
   create_table "orders", force: :cascade do |t|
     t.string "state"
     t.integer "amount_cents", default: 0, null: false
-    t.string "amount_currency", default: "MXN", null: false
     t.string "checkout_session_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -68,11 +67,11 @@ ActiveRecord::Schema.define(version: 2021_01_28_195511) do
   end
 
   create_table "user_items", force: :cascade do |t|
-    t.bigint "item_id"
+    t.bigint "item_id", null: false
     t.bigint "order_id", null: false
     t.string "special_instructions"
     t.integer "quantity"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_user_items_on_item_id"
@@ -97,5 +96,7 @@ ActiveRecord::Schema.define(version: 2021_01_28_195511) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "user_items", "items"
   add_foreign_key "user_items", "orders"
+  add_foreign_key "user_items", "users"
 end
