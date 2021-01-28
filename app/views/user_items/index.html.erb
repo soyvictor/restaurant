@@ -1,2 +1,14 @@
-<h1>hello</h1>
-<%= @cart %>
+<div style="position: relative; top: 65px;" >
+  <h1>Shopping Cart</h1>
+  <% @cart.each do |user_item| %>
+    <div style="border: 1px solid black;">
+    <%= user_item.item.name %>
+      <br>
+      <%= user_item.quantity %>
+      <br>
+      <%= user_item.special_instructions %>
+      <br>
+      <%= user_item.quantity * user_item.item.price %>
+    </div>
+  <% end %>
+</div>
