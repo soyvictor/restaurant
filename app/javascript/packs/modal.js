@@ -51,7 +51,7 @@ function openModal() {
 
   function addOrder() {
     modalSubmitButtonValue.setAttribute("value", `Added!`);
-    resetModal(600);
+    resetModal(700);
   }
 
   function handleClickOutside(e) {

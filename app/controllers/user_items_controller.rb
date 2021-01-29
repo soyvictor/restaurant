@@ -1,7 +1,15 @@
 class UserItemsController < ApplicationController
   def index
     # @cart = UserItem.all
-    @shopping_cart = UserItem.all
+    @shopping_cart = UserItem.all.where(user: current_user)
+    shoppingCartPriceCounter = 0
+    shoppingCartQuantity = 0
+    @shopping_cart.each do |user_item|
+      shoppingCartPriceCounter += (user_item.item.price * user_item.quantity)
+      shoppingCartQuantity += user_item.quantity
+    end
+    @shopping_cart_total = shoppingCartPriceCounter
+    @shopping_cart_quantity = shoppingCartQuantity
   end
 
   def new
