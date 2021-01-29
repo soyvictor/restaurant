@@ -10,9 +10,9 @@ class UserItemsController < ApplicationController
 
   def create
     @user_item = UserItem.new
-    @user_item.item = Item.find(params["item_id"])
-    @user_item.special_instructions = params["special-options"]
-    @user_item.quantity = params["modal-quantity"]
+    @user_item.item = Item.find(params["itemId"])
+    @user_item.special_instructions = params["specialNotes"]
+    @user_item.quantity = params["modalQuantity"]
     @user_item.user = current_user
     if current_user.orders.find_by(state: "pending")
       @user_item.order = current_user.orders.find_by(state: "pending")

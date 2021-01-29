@@ -1,18 +1,18 @@
 // Selectors
 const foodItem = document.querySelector('.testItem');
 const modal = document.querySelector('.modal');
+const modalInner = document.querySelector('.modalInner')
 const mainContent = document.querySelector('body');
 const minusQuantity = document.querySelector('.minus-quantity');
 const plusQuantity = document.querySelector('.plus-quantity');
-const quantityOutside = document.querySelector('.quantity-outside');
-const quantityOutsideInteger = parseInt(quantityOutside.innerText, 10);
+const modalCounter = document.querySelector('.modalCounter');
+const modalCount = parseInt(modalCounter.innerText, 10);
 let counter = 1;
 const modalSubmitButtonValue = document.querySelector('.modal-button');
 const items = document.querySelectorAll('.item');
 const buttonPrice = document.querySelector('.button-price');
-const hiddenModalQuantity = document.getElementById('modal-quantity');
-const hiddenItemId = document.getElementById('item-id');
-console.log(hiddenItemId);
+const hiddenModalQuantity = document.getElementById('modalQuantity');
+const hiddenItemId = document.getElementById('itemId');
 
 function openModal() {
     console.info('Opening Modal...');
@@ -22,9 +22,7 @@ function openModal() {
       return; //stop the function from opening
     }
     modal.classList.add('open');
-
     mainContent.classList.add('closed');
-
     // Event listeners to be bound when we open the modal.
   }
 
@@ -32,10 +30,9 @@ function openModal() {
     mainContent.classList.remove('closed');
     modal.classList.remove('open');
     // TODO: add event listeners for clicks and keyboard...
-    window.removeEventListener('keyup', handleKeyUp);
-    nextButton.removeEventListener('click', showNextImage);
-    prevButton.removeEventListener('click', showPrevImage);
-
+    // window.removeEventListener('keyup', handleKeyUp);
+    // nextButton.removeEventListener('click', showNextImage);
+    // prevButton.removeEventListener('click', showPrevImage);
   }
 
   function handleClickOutside(e) {
@@ -51,7 +48,7 @@ function openModal() {
   function changeQuantity(direction) {
     if (direction === 'plus') {
       counter += 1;
-      quantityOutside.innerText = counter;
+      modalCounter.innerText = counter;
       updateButtonText();
       hiddenModalQuantity.value = counter;
     } else {
@@ -59,7 +56,7 @@ function openModal() {
         return;
       } else {
       counter -= 1;
-      quantityOutside.innerText = counter;
+      modalCounter.innerText = counter;
       updateButtonText();
       hiddenModalQuantity.value = counter;
       }
@@ -82,6 +79,7 @@ function openModal() {
     buttonPrice.innerText = el.dataset.price;
     hiddenItemId.value = el.dataset.id;
     currentItem = el;
+    modalInner.scrollTop = 0;
     openModal();
 
   }

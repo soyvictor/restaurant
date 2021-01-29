@@ -144,8 +144,8 @@
     <div style="width: 100%;">
       <form action="<%= user_items_path %>" method="POST" style="width: 100%">
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-        <input type="hidden" id="modal-quantity" name="modal-quantity" value="1">
-        <input type="hidden" name="item_id" id="item-id" value="123">
+        <input type="hidden" id="modalQuantity" name="modalQuantity" value="1">
+        <input type="hidden" name="itemId" id="itemId" value="123">
         <div style="padding: 24px; padding-top: 16px;">
           <input id="con-todo" type="checkbox" name="options" value="con todo">
           <label for="con-todo">con todo</label>
@@ -159,10 +159,10 @@
         <div class="options">
           <h5>Special Instructions</h5>
         </div>
-        <textarea class="special-notes" name="special-options" placeholder="Add a note" style="border: none;"></textarea>
+        <textarea class="special-notes" name="specialNotes" placeholder="Add a note" style="border: none;"></textarea>
         <div class="add-to-cart">
           <div class="counter">
-            <span><i class="far fa-minus-square counterText minus-quantity"  style="padding-right: 4px;"></i></span><span class=" counterText quantity-outside" style="display: inline-block; width: 32px; text-align: center;">1</span><span style="padding-left: 4px;"><i class="far fa-plus-square counterText plus-quantity"></i></span>
+            <span><i class="far fa-minus-square counterText minus-quantity"  style="padding-right: 4px;"></i></span><span class=" counterText modalCounter" style="display: inline-block; width: 32px; text-align: center;">1</span><span style="padding-left: 4px;"><i class="far fa-plus-square counterText plus-quantity"></i></span>
           </div>
           <input type="submit" class="modal-button" value='Add 1 to Order'>
         </div>
