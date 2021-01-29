@@ -14,8 +14,17 @@ class UserItemsController < ApplicationController
     @user_item.special_instructions = params["special-options"]
     @user_item.quantity = params["modal-quantity"]
     @user_item.user = current_user
-    @user_item.order = Order.first
-    @user_item.save!
+    if current_user.orders.find_by(state: "pending")
+      @user_item.order = current_user.orders.find_by(state: "pending")
+      @user_item.save!
+    else
+      new_order = Order.new
+      new_order.user = current_user
+      new_order.save!
+      @user_item.order = new_order
+      @user_item.save!
+    end
+
     redirect_to root_path
   end
 
