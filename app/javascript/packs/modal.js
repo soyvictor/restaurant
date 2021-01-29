@@ -10,6 +10,9 @@ let counter = 1;
 const modalSubmitButtonValue = document.querySelector('.modal-button');
 const items = document.querySelectorAll('.item');
 const buttonPrice = document.querySelector('.button-price');
+const hiddenModalQuantity = document.getElementById('modal-quantity');
+const hiddenItemId = document.getElementById('item-id');
+console.log(hiddenItemId);
 
 function openModal() {
     console.info('Opening Modal...');
@@ -50,6 +53,7 @@ function openModal() {
       counter += 1;
       quantityOutside.innerText = counter;
       updateButtonText();
+      hiddenModalQuantity.value = counter;
     } else {
       if (counter === 1) {
         return;
@@ -57,6 +61,7 @@ function openModal() {
       counter -= 1;
       quantityOutside.innerText = counter;
       updateButtonText();
+      hiddenModalQuantity.value = counter;
       }
     }
   }
@@ -75,6 +80,7 @@ function openModal() {
     modal.querySelector('h2').textContent = el.dataset.name;
     modal.querySelector('p').textContent = el.dataset.description;
     buttonPrice.innerText = el.dataset.price;
+    hiddenItemId.value = el.dataset.id;
     currentItem = el;
     openModal();
 

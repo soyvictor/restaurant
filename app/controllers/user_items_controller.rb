@@ -10,12 +10,13 @@ class UserItemsController < ApplicationController
 
   def create
     @user_item = UserItem.new
-    item_id
-    special_instructions
-    quantity
-    @user = current_user
-    @user_item.save
-    redirect_to user_items_path
+    @user_item.item = Item.find(params["item_id"])
+    @user_item.special_instructions = params["special-options"]
+    @user_item.quantity = params["modal-quantity"]
+    @user_item.user = current_user
+    @user_item.order = Order.first
+    @user_item.save!
+    redirect_to root_path
   end
 
   def edit
