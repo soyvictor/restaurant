@@ -41,15 +41,17 @@ function openModal() {
 
   function resetModal(seconds) {
     setTimeout(function(){
-      counter = 0;
+      closeModal();
+      counter = 1;
+      updateButtonText()
       modalCounter.innerText = counter;
       hiddenModalQuantity.value = counter;
-      closeModal();
-  }, seconds);
+    }, seconds);
+  }
 
-
-
-
+  function addOrder() {
+    modalSubmitButtonValue.setAttribute("value", `Added!`);
+    resetModal(600);
   }
 
   function handleClickOutside(e) {
@@ -109,4 +111,4 @@ modal.addEventListener('click', handleClickOutside);
 minusQuantity.addEventListener('click', () => changeQuantity('minus'));
 plusQuantity.addEventListener('click', () => changeQuantity('plus'));
 items.forEach(image => image.addEventListener('click', (e) => showItem(e.currentTarget)));
-modalForm.addEventListener('submit', () => resetModal(300));
+modalForm.addEventListener('submit', addOrder);
