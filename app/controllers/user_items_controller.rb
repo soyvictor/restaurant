@@ -1,7 +1,7 @@
 class UserItemsController < ApplicationController
   def index
     # @cart = UserItem.all
-    @cart = UserItem.all
+    @shopping_cart = UserItem.all
   end
 
   def new
