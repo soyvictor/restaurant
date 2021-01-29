@@ -8,6 +8,7 @@ const plusQuantity = document.querySelector('.plus-quantity');
 const modalCounter = document.querySelector('.modalCounter');
 const modalCount = parseInt(modalCounter.innerText, 10);
 let counter = 1;
+const modalForm = document.querySelector('.modalForm');
 const modalSubmitButtonValue = document.querySelector('.modal-button');
 const items = document.querySelectorAll('.item');
 const buttonPrice = document.querySelector('.button-price');
@@ -29,15 +30,32 @@ function openModal() {
   function closeModal() {
     mainContent.classList.remove('closed');
     modal.classList.remove('open');
+
+
+
     // TODO: add event listeners for clicks and keyboard...
     // window.removeEventListener('keyup', handleKeyUp);
     // nextButton.removeEventListener('click', showNextImage);
     // prevButton.removeEventListener('click', showPrevImage);
   }
 
+  function resetModal(seconds) {
+    setTimeout(function(){
+      counter = 0;
+      modalCounter.innerText = counter;
+      hiddenModalQuantity.value = counter;
+      closeModal();
+  }, seconds);
+
+
+
+
+  }
+
   function handleClickOutside(e) {
     if(e.target === e.currentTarget) {
-      closeModal();
+      // closeModal();
+      resetModal(0);
     }
   }
 
@@ -91,3 +109,4 @@ modal.addEventListener('click', handleClickOutside);
 minusQuantity.addEventListener('click', () => changeQuantity('minus'));
 plusQuantity.addEventListener('click', () => changeQuantity('plus'));
 items.forEach(image => image.addEventListener('click', (e) => showItem(e.currentTarget)));
+modalForm.addEventListener('submit', () => resetModal(300));

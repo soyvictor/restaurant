@@ -24,8 +24,6 @@ class UserItemsController < ApplicationController
       @user_item.order = new_order
       @user_item.save!
     end
-
-    redirect_to root_path
   end
 
   def edit
