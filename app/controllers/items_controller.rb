@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @categories = Category.all
+    raise
   end
 
   def create

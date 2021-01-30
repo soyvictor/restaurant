@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3 search_results">
+      <%= simple_form_for [@item_option] do |f| %>
+        <%= f.input :name, label: 'Item Option Name', input_html: { class: 'search-fields' }  %>
+        <%= f.input :item, label: 'Item', collection: @items %>
+
+      <div class="mb-5">
+      <%= f.submit "Add item", class: "btn search-button-styled mt-2 form-control", style: "width: 100%;" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
