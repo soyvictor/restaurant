@@ -15,7 +15,11 @@
   Total: <%= @shopping_cart_total %>
   Quantity: <%= @shopping_cart_quantity %>
 
+  <% if current_user.user_items.where(state: "pending").length > 0 %>
   <%= form_tag orders_path do %>
     <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+  <% end %>
+  <% else %>
+  <h1>You have not added any items to your shopping cart!</h1>
   <% end %>
 </div>

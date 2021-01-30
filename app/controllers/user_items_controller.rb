@@ -1,7 +1,7 @@
 class UserItemsController < ApplicationController
   def index
     # @cart = UserItem.all
-    @shopping_cart = UserItem.all.where(user: current_user)
+    @shopping_cart = UserItem.all.where(user: current_user, state: "pending")
     shoppingCartPriceCounter = 0
     shoppingCartQuantity = 0
     @shopping_cart.each do |user_item|
