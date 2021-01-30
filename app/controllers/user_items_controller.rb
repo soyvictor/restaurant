@@ -17,6 +17,7 @@ class UserItemsController < ApplicationController
   end
 
   def create
+    raise
     @user_item = UserItem.new
     @user_item.item = Item.find(params["itemId"])
     @user_item.special_instructions = params["specialNotes"]
@@ -35,5 +36,8 @@ class UserItemsController < ApplicationController
   end
 
   def edit
+  end
+
+  def admin
   end
 end
