@@ -14,4 +14,8 @@
 
   Total: <%= @shopping_cart_total %>
   Quantity: <%= @shopping_cart_quantity %>
+
+  <%= form_tag orders_path do %>
+    <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+  <% end %>
 </div>
