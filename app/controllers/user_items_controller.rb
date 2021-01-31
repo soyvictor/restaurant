@@ -17,15 +17,18 @@ class UserItemsController < ApplicationController
   end
 
   def create
-    raise
     @user_item = UserItem.new
     @user_item.item = Item.find(params["itemId"])
     @user_item.special_instructions = params["specialNotes"]
     @user_item.quantity = params["modalQuantity"]
     @user_item.user = current_user
+    the_options = params["options"]
+    the_options.each do |option|
+      @user_item.item_options = ItemOption.find_by(name: option)
+    end
     if current_user.orders.find_by(state: "pending")
       @user_item.order = current_user.orders.find_by(state: "pending")
-      @user_item.save!
+      @user_item.save
     else
       new_order = Order.new
       new_order.user = current_user

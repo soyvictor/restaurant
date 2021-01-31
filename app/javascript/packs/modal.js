@@ -14,6 +14,7 @@ const items = document.querySelectorAll('.item');
 const buttonPrice = document.querySelector('.button-price');
 const hiddenModalQuantity = document.getElementById('modalQuantity');
 const hiddenItemId = document.getElementById('itemId');
+const optionsSection = document.querySelector('.options-section');
 
 function openModal() {
     console.info('Opening Modal...');
@@ -30,9 +31,7 @@ function openModal() {
   function closeModal() {
     mainContent.classList.remove('closed');
     modal.classList.remove('open');
-
-
-
+    optionsSection.innerHTML = '';
     // TODO: add event listeners for clicks and keyboard...
     // window.removeEventListener('keyup', handleKeyUp);
     // nextButton.removeEventListener('click', showNextImage);
@@ -100,6 +99,14 @@ function openModal() {
     hiddenItemId.value = el.dataset.id;
     currentItem = el;
     modalInner.scrollTop = 0;
+    const itemOptionsArray = JSON.parse(el.dataset.options);
+
+    itemOptionsArray.forEach((option) => {
+          optionsSection.insertAdjacentHTML('afterbegin', `<input id=${option} type="checkbox" name="options[]" value=${option}>
+        <label for=${option}>${option}</label>
+        <br>`)
+        })
+        ;
     openModal();
 
   }
