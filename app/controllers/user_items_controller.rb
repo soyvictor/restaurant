@@ -22,25 +22,24 @@ class UserItemsController < ApplicationController
     @user_item.special_instructions = params["specialNotes"]
     @user_item.quantity = params["modalQuantity"]
     @user_item.user = current_user
-    the_options = params["options"]
-    the_options.each do |option|
-      @user_item.options << ItemOption.find_by(name: option).id.to_i
+    if params["options"]
+      options = params["options"]
+      options.each do |option|
+        @user_item.options << ItemOption.find_by(name: option).id.to_i
+      end
     end
     if current_user.orders.find_by(state: "pending")
       @user_item.order = current_user.orders.find_by(state: "pending")
-      @user_item.save!
+      @user_item.save
     else
       new_order = Order.new
       new_order.user = current_user
-      new_order.save!
+      new_order.save
       @user_item.order = new_order
-      @user_item.save!
+      @user_item.save
     end
   end
 
   def edit
-  end
-
-  def admin
   end
 end

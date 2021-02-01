@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @categories = Category.all
-    raise
   end
 
   def create
@@ -33,7 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   private

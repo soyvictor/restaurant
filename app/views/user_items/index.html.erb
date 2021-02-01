@@ -5,8 +5,10 @@
     <%= user_item.item.name %>
       <br>
       <%= user_item.quantity %>
+      <% if user_item.special_instructions.length > 0 %>
       <br>
       <%= user_item.special_instructions %>
+      <% end %>
       <br>
       <%= user_item.quantity * user_item.item.price %>
       <% unless user_item.options.nil? %>
