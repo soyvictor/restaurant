@@ -36,6 +36,7 @@ function openModal() {
     optionsTitle.innerHTML = '';
     optionsSection.innerHTML = '';
     optionPriceCounter = 0;
+    counter = 0;
     // TODO: add event listeners for clicks and keyboard...
     // window.removeEventListener('keyup', handleKeyUp);
     // nextButton.removeEventListener('click', showNextImage);
@@ -46,7 +47,7 @@ function openModal() {
     setTimeout(function(){
       closeModal();
       counter = 1;
-      updateButtonText()
+      updateButtonText();
       modalCounter.innerText = counter;
       hiddenModalQuantity.value = counter;
     }, seconds);
@@ -75,6 +76,8 @@ function openModal() {
       console.info('item');
       return
     }
+
+    let counter = 1;
 
     // update the modal with this info
     // const image = el.querySelector('img');
@@ -135,6 +138,5 @@ function openModal() {
 // These are our event listeners
 // foodItem.addEventListener('click', openModal);
 modal.addEventListener('click', handleClickOutside);
-
 items.forEach(image => image.addEventListener('click', (e) => showItem(e.currentTarget)));
 modalForm.addEventListener('submit', addOrder);
