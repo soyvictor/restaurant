@@ -24,6 +24,7 @@
 
   <% if current_user.user_items.where(state: "pending").length > 0 %>
   <%= form_tag orders_path do %>
+    <%= hidden_field_tag "shopping_cart_total", @shopping_cart_total.to_i %>
     <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
   <% end %>
   <% else %>

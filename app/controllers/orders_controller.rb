@@ -5,12 +5,13 @@ class OrdersController < ApplicationController
 
   def create
       order = current_user.orders.find_by(state: "pending")
+      order.amount = params["shopping_cart_total"]
 
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
           name: "Victor's test",
-          amount: 1000,
+          amount: order.amount_cents,
           currency: 'mxn',
           quantity: 1
         }],
