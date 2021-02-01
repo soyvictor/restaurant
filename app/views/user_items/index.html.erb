@@ -9,6 +9,13 @@
       <%= user_item.special_instructions %>
       <br>
       <%= user_item.quantity * user_item.item.price %>
+      <% unless user_item.options.nil? %>
+      <% user_item.options.each do |option| %>
+        <% itemOption = ItemOption.find(option) %>
+        <p><%= itemOption.name %></p>
+      <% end %>
+      <% end %>
+
     </div>
   <% end %>
 
