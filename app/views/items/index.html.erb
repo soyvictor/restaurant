@@ -137,9 +137,7 @@
     <h2 style="padding: 24px; padding-bottom: 0px;">Torta de pierna</h2>
     <p style="padding: 24px; padding-top: 2px;">Orden de 4 tacos en tortillas de maíz</p>
     <span style="padding: 24px; padding-top: 2px;" class="button-price">blah</span>
-
-    <div class="options">
-      <h5>Options</h5>
+    <div class="modal-sections options-title">
     </div>
     <div style="width: 100%">
       <form class="modalForm" action="<%= user_items_path %>" method="POST" style="width: 100%">
@@ -148,7 +146,7 @@
         <input type="hidden" name="itemId" id="itemId" value="123">
         <div class="options-section" style="padding: 24px; padding-top: 16px;">
         </div>
-        <div class="options">
+        <div class="modal-sections">
           <h5>Special Instructions</h5>
         </div>
         <textarea class="special-notes" name="specialNotes" placeholder="Add a note" style="border: none; margin-bottom: 30px;"></textarea>
