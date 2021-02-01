@@ -8,6 +8,7 @@ class ItemOptionsController < ApplicationController
     @item_option = ItemOption.new
     @item_option.name = item_option_params[:name]
     @item_option.item = Item.find(item_option_params[:item])
+    @item_option.price = item_option_params[:price]
     @item_option.user = current_user
 
     if @item_option.save
@@ -21,6 +22,6 @@ class ItemOptionsController < ApplicationController
   private
 
   def item_option_params
-    params.require(:item_option).permit(:name, :item)
+    params.require(:item_option).permit(:name, :item, :price)
   end
 end

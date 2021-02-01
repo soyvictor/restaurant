@@ -15,6 +15,7 @@ const hiddenModalQuantity = document.getElementById('modalQuantity');
 const hiddenItemId = document.getElementById('itemId');
 const optionsSection = document.querySelector('.options-section');
 const optionsTitle = modalInner.querySelector('.options-title');
+let optionPriceCounter = 0;
 
 function openModal() {
     console.info('Opening Modal...');
@@ -33,6 +34,7 @@ function openModal() {
     modal.classList.remove('open');
     optionsTitle.innerHTML = '';
     optionsSection.innerHTML = '';
+    optionPriceCounter = 0;
     // TODO: add event listeners for clicks and keyboard...
     // window.removeEventListener('keyup', handleKeyUp);
     // nextButton.removeEventListener('click', showNextImage);
@@ -104,11 +106,14 @@ function openModal() {
     if (itemOptionsArray.length > 0) {
       optionsTitle.insertAdjacentHTML('afterbegin', '<h5>Options</h5>')
     };
-
+    const optionPrices = JSON.parse(el.dataset.prices);
+    console.log(optionPrices);
     itemOptionsArray.forEach((option) => {
+
           optionsSection.insertAdjacentHTML('afterbegin', `<div style="display: flex; justify-content: space-between; align-items: center;"><div><input id=${option} type="checkbox" name="options[]" value=${option}>
-        <label for=${option}>${option}</label></div><h6>$20.00</h6></div>
+        <label for=${option}>${option}</label></div><h6>+${optionPrices[optionPriceCounter]}</h6></div>
         <br>`)
+        optionPriceCounter += 1;
         })
         ;
     openModal();

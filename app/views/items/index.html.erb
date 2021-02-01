@@ -23,7 +23,7 @@
               <h5><strong><%= category.name %></strong></h5>
               <ul>
                 <% category.items.each do |item| %>
-                <li><a class="item" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money_with_symbol(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>"><%= item.name %></a></li>
+                <li><a class="item" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money_with_symbol(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>" data-prices="<%= item.item_options.map do |item_option| humanized_money_with_symbol(item_option.price) end %>"><%= item.name %></a></li>
                 <% end %>
               </ul>
             </div>
@@ -154,7 +154,7 @@
           <div class="counter">
             <span><i class="far fa-minus-square counterText minus-quantity"  style="padding-right: 4px;"></i></span><span class="counterText modalCounter" style="display: inline-block; width: 32px; text-align: center;">1</span><span style="padding-left: 4px;"><i class="far fa-plus-square counterText plus-quantity"></i></span>
           </div>
-          <input type="submit" class="modal-button" value='Add 1 to Order'>
+          <input type="submit" class="modal-button" value="Add 1 to Order" >
         </div>
       </form>
     </div>
