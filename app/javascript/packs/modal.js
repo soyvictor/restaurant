@@ -1,17 +1,16 @@
 // Selectors
-const foodItem = document.querySelector('.testItem');
 const modal = document.querySelector('.modal');
-const modalInner = document.querySelector('.modalInner')
-const mainContent = document.querySelector('body');
-const minusQuantity = document.querySelector('.minus-quantity');
-const plusQuantity = document.querySelector('.plus-quantity');
-const modalCounter = document.querySelector('.modalCounter');
+const modalInner = modal.querySelector('.modalInner')
+const bodyContent = document.querySelector('body');
+const minusQuantity = modalInner.querySelector('.minus-quantity');
+const plusQuantity = modalInner.querySelector('.plus-quantity');
+const modalCounter = modalInner.querySelector('.modalCounter');
 const modalCount = parseInt(modalCounter.innerText, 10);
 let counter = 1;
-const modalForm = document.querySelector('.modalForm');
-const modalSubmitButtonValue = document.querySelector('.modal-button');
+const modalForm = modalInner.querySelector('.modalForm');
+const modalSubmitButtonValue = modalInner.querySelector('.modal-button');
 const items = document.querySelectorAll('.item');
-const buttonPrice = document.querySelector('.button-price');
+const buttonPrice = modalInner.querySelector('.button-price');
 const hiddenModalQuantity = document.getElementById('modalQuantity');
 const hiddenItemId = document.getElementById('itemId');
 const optionsSection = document.querySelector('.options-section');
@@ -24,12 +23,12 @@ function openModal() {
       return; //stop the function from opening
     }
     modal.classList.add('open');
-    mainContent.classList.add('closed');
+    bodyContent.classList.add('closed');
     // Event listeners to be bound when we open the modal.
   }
 
   function closeModal() {
-    mainContent.classList.remove('closed');
+    bodyContent.classList.remove('closed');
     modal.classList.remove('open');
     optionsSection.innerHTML = '';
     // TODO: add event listeners for clicks and keyboard...
@@ -113,7 +112,7 @@ function openModal() {
 
 
 // These are our event listeners
-foodItem.addEventListener('click', openModal);
+// foodItem.addEventListener('click', openModal);
 modal.addEventListener('click', handleClickOutside);
 minusQuantity.addEventListener('click', () => changeQuantity('minus'));
 plusQuantity.addEventListener('click', () => changeQuantity('plus'));
