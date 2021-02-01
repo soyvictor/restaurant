@@ -165,12 +165,18 @@ body.closed {
   align-items: center;
 }
 
+.modal-button-container {
+  // width: 100%;
+  flex-grow: 1;
+  position: relative;
+}
+
 .modal-button {
   font-size: 1rem;
   background-color: hsla(0, 0%, 0%, 1.00);
   padding: .5rem 2rem;
   color: white;
-  flex-grow: 1;
+  width: 100%;
 }
 .counter {
   padding: 0 1rem;

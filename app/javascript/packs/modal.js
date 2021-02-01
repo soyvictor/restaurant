@@ -15,6 +15,7 @@ const hiddenModalQuantity = document.getElementById('modalQuantity');
 const hiddenItemId = document.getElementById('itemId');
 const optionsSection = document.querySelector('.options-section');
 const optionsTitle = modalInner.querySelector('.options-title');
+const modalButtonPrice = modalInner.querySelector('.modal-button-price');
 let optionPriceCounter = 0;
 
 function openModal() {
@@ -67,23 +68,7 @@ function openModal() {
     modalSubmitButtonValue.setAttribute("value", `Add ${counter} to Order`)
   }
 
-  function changeQuantity(direction) {
-    if (direction === 'plus') {
-      counter += 1;
-      modalCounter.innerText = counter;
-      updateButtonText();
-      hiddenModalQuantity.value = counter;
-    } else {
-      if (counter === 1) {
-        return;
-      } else {
-      counter -= 1;
-      modalCounter.innerText = counter;
-      updateButtonText();
-      hiddenModalQuantity.value = counter;
-      }
-    }
-  }
+
 
   function showItem(el) {
     if(!el) {
@@ -116,6 +101,33 @@ function openModal() {
         optionPriceCounter += 1;
         })
         ;
+    const itemPrice = el.dataset.price
+    modalButtonPrice.innerText = `$${itemPrice}`;
+
+    function changeQuantity(direction) {
+      const theItemPrice = parseInt(itemPrice, 10);
+      if (direction === 'plus') {
+        counter += 1;
+        modalCounter.innerText = counter;
+        updateButtonText();
+        hiddenModalQuantity.value = counter;
+        modalButtonPrice.innerText = `$${theItemPrice * counter}`;
+      } else {
+        if (counter === 1) {
+          return;
+        } else {
+        counter -= 1;
+        modalCounter.innerText = counter;
+        updateButtonText();
+        hiddenModalQuantity.value = counter;
+        modalButtonPrice.innerText = `$${theItemPrice * counter}`;
+        }
+      }
+    }
+
+    minusQuantity.addEventListener('click', () => changeQuantity('minus'));
+    plusQuantity.addEventListener('click', () => changeQuantity('plus'));
+
     openModal();
 
   }
@@ -123,7 +135,6 @@ function openModal() {
 // These are our event listeners
 // foodItem.addEventListener('click', openModal);
 modal.addEventListener('click', handleClickOutside);
-minusQuantity.addEventListener('click', () => changeQuantity('minus'));
-plusQuantity.addEventListener('click', () => changeQuantity('plus'));
+
 items.forEach(image => image.addEventListener('click', (e) => showItem(e.currentTarget)));
 modalForm.addEventListener('submit', addOrder);
