@@ -23,7 +23,7 @@
               <h5><strong><%= category.name %></strong></h5>
               <ul>
                 <% category.items.each do |item| %>
-                <li><a class="item" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>" data-prices="<%= item.item_options.map do |item_option| humanized_money_with_symbol(item_option.price) end %>"><%= item.name %></a></li>
+                <li><a class="item" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>" data-prices="<%= item.item_options.map do |item_option| humanized_money(item_option.price) end %>"><%= item.name %></a></li>
                 <% end %>
               </ul>
             </div>
