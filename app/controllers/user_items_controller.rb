@@ -20,26 +20,39 @@ class UserItemsController < ApplicationController
   end
 
   def create
-    @user_item = UserItem.new
-    @user_item.item = Item.find(params["itemId"])
-    @user_item.special_instructions = params["specialNotes"]
-    @user_item.quantity = params["modalQuantity"]
-    @user_item.user = current_user
     if params["options"]
-      options = params["options"]
-      options.each do |option|
-        @user_item.options << ItemOption.find_by(name: option).id.to_i
-      end
-    end
-    if current_user.orders.find_by(state: "pending")
-      @user_item.order = current_user.orders.find_by(state: "pending")
-      @user_item.save
+      theOptions = params["options"]
+      theOptionsArray = theOptions.map do |option| ItemOption.find_by(name: option).id end
     else
-      new_order = Order.new
-      new_order.user = current_user
-      new_order.save
-      @user_item.order = new_order
-      @user_item.save
+      theOptionsArray = []
+    end
+
+    if theItem = UserItem.find_by(item: Item.find(params["itemId"].to_i), special_instructions: params["specialNotes"], user: current_user, options: theOptionsArray)
+      theItem.quantity = theItem.quantity.to_i + params["modalQuantity"].to_i
+      theItem.save!
+    else
+
+      @user_item = UserItem.new
+      @user_item.item = Item.find(params["itemId"])
+      @user_item.special_instructions = params["specialNotes"]
+      @user_item.quantity = params["modalQuantity"]
+      @user_item.user = current_user
+      if params["options"]
+        options = params["options"]
+        options.each do |option|
+          @user_item.options << ItemOption.find_by(name: option).id.to_i
+        end
+      end
+      if current_user.orders.find_by(state: "pending")
+        @user_item.order = current_user.orders.find_by(state: "pending")
+        @user_item.save
+      else
+        new_order = Order.new
+        new_order.user = current_user
+        new_order.save
+        @user_item.order = new_order
+        @user_item.save
+      end
     end
   end
 
