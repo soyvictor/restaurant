@@ -6,6 +6,9 @@ class UserItemsController < ApplicationController
     shoppingCartQuantity = 0
     @shopping_cart.each do |user_item|
       shoppingCartPriceCounter += (user_item.item.price * user_item.quantity)
+      user_item.options.each do |option|
+       shoppingCartPriceCounter += (ItemOption.find(option).price * user_item.quantity)
+      end
       shoppingCartQuantity += user_item.quantity
     end
     @shopping_cart_total = shoppingCartPriceCounter

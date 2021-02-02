@@ -34,7 +34,6 @@ function openModal() {
 
   function closeModal() {
     counter = 1;
-    console.log(counter);
     bodyContent.classList.remove('closed');
     modal.classList.remove('open');
     optionsTitle.innerHTML = '';
@@ -71,7 +70,6 @@ function openModal() {
   }
 
   function checkOptionsChecked(something) {
-    console.log(something);
     if (something.checked) {
     itemPrice += parseInt(something.dataset.prices2);
     modalButtonPrice.innerText = `$${itemPrice * counter}`;;
@@ -84,7 +82,6 @@ function openModal() {
   function changeQuantity(direction) {
     if (direction === 'plus') {
       counter += 1;
-      console.log(counter);
       modalCounter.innerText = counter;
       updateButtonText();
       hiddenModalQuantity.value = counter;
@@ -109,7 +106,6 @@ function openModal() {
       console.info('item');
       return
     }
-    console.log(counter);
 
     // update the modal with this info
     // const image = el.querySelector('img');
