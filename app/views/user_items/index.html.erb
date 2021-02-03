@@ -21,8 +21,8 @@
     </div>
   <% end %>
 
-  Total: <%= @shopping_cart_total %>
-  Quantity: <%= @shopping_cart_quantity %>
+  Total: <%= @shoppingCartPriceCounter %>
+  Quantity: <%= @shoppingCartQuantity %>
 
   <% if current_user.user_items.where(state: "pending").length > 0 %>
   <%= form_tag orders_path do %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_014810) do
+ActiveRecord::Schema.define(version: 2021_02_03_181034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 2021_02_03_014810) do
 
   create_table "user_items", force: :cascade do |t|
     t.bigint "item_id", null: false
-    t.bigint "order_id", null: false
     t.string "special_instructions"
     t.integer "quantity"
     t.bigint "user_id", null: false
@@ -88,6 +87,7 @@ ActiveRecord::Schema.define(version: 2021_02_03_014810) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "state", default: "pending"
     t.integer "options", default: [], array: true
+    t.bigint "order_id"
     t.index ["item_id"], name: "index_user_items_on_item_id"
     t.index ["order_id"], name: "index_user_items_on_order_id"
     t.index ["user_id"], name: "index_user_items_on_user_id"
@@ -113,6 +113,5 @@ ActiveRecord::Schema.define(version: 2021_02_03_014810) do
   add_foreign_key "items", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "user_items", "items"
-  add_foreign_key "user_items", "orders"
   add_foreign_key "user_items", "users"
 end
