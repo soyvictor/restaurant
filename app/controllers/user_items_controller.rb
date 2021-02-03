@@ -11,8 +11,14 @@ class UserItemsController < ApplicationController
     #   end
     #   shoppingCartQuantity += user_item.quantity
     # end
-    @shopping_cart_total = current_user.orders.find_by(state: "pending").amount
-    @shopping_cart_quantity = current_user.orders.find_by(state: "pending").quantity
+
+    if shopping_cart = current_user.orders.find_by(state: "pending")
+      @shopping_cart_total = shopping_cart.amount
+      @shopping_cart_quantity = shopping_cart.quantity
+    else
+      @shopping_cart_total = 0
+      @shopping_cart_quantity = 0
+    end
   end
 
   def new
@@ -26,6 +32,9 @@ class UserItemsController < ApplicationController
     order.user_items.where(state: "pending").each do |user_item|
       quantityCounter += user_item.quantity
       priceCounter += (user_item.item.price * user_item.quantity)
+      user_item.options.each do |option|
+      priceCounter += (ItemOption.find(option).price * user_item.quantity)
+      end
     end
     order.quantity = quantityCounter
     order.amount = priceCounter
