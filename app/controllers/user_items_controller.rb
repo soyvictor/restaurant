@@ -86,8 +86,10 @@ class UserItemsController < ApplicationController
 
   def destroy
     @user_item = UserItem.find(params[:id])
-    @user_item.destroy
+    if @user_item.state = "pending"
+      @user_item.destroy
     # no need for app/views/restaurants/destroy.html.erb
     redirect_to user_items_path
+    end
   end
 end
