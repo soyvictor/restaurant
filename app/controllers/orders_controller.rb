@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
 
   def create
       order = current_user.orders.find_by(state: "pending")
-      order.amount = params["shopping_cart_total"]
       order.save
 
       session = Stripe::Checkout::Session.create(
@@ -14,7 +13,7 @@ class OrdersController < ApplicationController
           name: "Victor's test",
           amount: order.amount_cents,
           currency: 'mxn',
-          quantity: order.quantity
+          quantity: 1
         }],
         success_url: order_url(order),
         cancel_url: order_url(order)
