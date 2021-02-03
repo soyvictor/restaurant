@@ -1,7 +1,7 @@
 class UserItemsController < ApplicationController
   def index
     # @cart = UserItem.all
-    @shopping_cart = UserItem.all.where(user: current_user, state: "pending")
+    @shopping_cart = UserItem.where(user: current_user, state: "pending")
     shoppingCartPriceCounter = 0
     shoppingCartQuantity = 0
     @shopping_cart.each do |user_item|
@@ -22,7 +22,7 @@ class UserItemsController < ApplicationController
   def updateOrderQuantity(order)
     order = Order.find(order.id)
     counter = 0
-    order.user_items.each do |user_item|
+    order.user_items.where(state: "pending").each do |user_item|
       counter += user_item.quantity
     end
     order.quantity = counter
