@@ -14,7 +14,11 @@
    <header>
       <nav>
         <% itemsCount = 0 %>
+        <% if user_signed_in? %>
+        <% if current_user.user_items.where(state: "pending") %>
         <% current_user.user_items.where(state: "pending").each do |item| itemsCount += item.quantity end %>
+        <% end %>
+        <% end %>
           <!-- <img src="/assets/sample_logo.png" alt="cant find the image"> -->
           <!-- <%= image_tag "sample_logo.png", alt: "restaurant logo", class: "header-logo" %> -->
          <ul>
@@ -25,7 +29,11 @@
            <!-- <li><a href="">Promotions</a></li> -->
            <li><a href="#about-us">About Us</a></li>
            <li><a href="#contact">Contact</a></li>
-           <li><%= link_to user_items_path do %><div style="position: relative;"><i class="fas fa-shopping-basket"></i><span class="shopping-cart-count-icon"><%= current_user.user_items.where(state: "pending") ? itemsCount : 0 %></span></div><% end %></li>
+           <% if user_signed_in? %>
+             <li><%= link_to user_items_path do %><div style="position: relative;"><i class="fas fa-shopping-basket"></i><span class="shopping-cart-count-icon"><%= current_user.user_items.where(state: "pending") ? itemsCount : 0 %></span></div><% end %></li>
+          <% else %>
+            <li><%= link_to user_items_path do %><div style="position: relative;"><i class="fas fa-shopping-basket"></i><span class="shopping-cart-count-icon">0</span></div><% end %></li>
+           <% end %>
          </ul>
       </nav>
    </header>
