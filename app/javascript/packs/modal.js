@@ -2,23 +2,26 @@
 const modal = document.querySelector('.modal');
 const modalInner = modal.querySelector('.modalInner')
 const bodyContent = document.querySelector('body');
-const minusQuantity = modalInner.querySelector('.minus-quantity');
-const plusQuantity = modalInner.querySelector('.plus-quantity');
+const minusQuantityButton = modalInner.querySelector('.minus-quantity');
+const plusQuantityButton = modalInner.querySelector('.plus-quantity');
 const modalCounter = modalInner.querySelector('.modalCounter');
-const modalCount = parseInt(modalCounter.innerText, 10);
 const modalForm = modalInner.querySelector('.modalForm');
-const modalSubmitButtonValue = modalInner.querySelector('.modal-button');
-const items = document.querySelectorAll('.item');
-const buttonPrice = modalInner.querySelector('.button-price');
-const hiddenModalQuantity = document.getElementById('modalQuantity');
-const hiddenItemId = document.getElementById('itemId');
+const modalSubmitButtonText = modalInner.querySelector('.modal-button');
+const foodItems = document.querySelectorAll('.item');
+const buttonPrice = modalInner.querySelector('.button-price'); // should rename this
+const formHiddenModalQuantity = document.getElementById('modalQuantity');
+const formHiddenItemId = document.getElementById('itemId');
 const optionsSection = document.querySelector('.options-section');
 const optionsTitle = modalInner.querySelector('.options-title');
-const modalButtonPrice = modalInner.querySelector('.modal-button-price');
+const modalButtonPrice = modalInner.querySelector('.modal-button-price'); // should rename this
+
+// Counters
 let optionPriceCounter = 0;
 let counter = 1;
 let itemPrice = 0;
 let optionsChecked = document.querySelectorAll('.options-checked');
+
+// Functions
 
 function openModal() {
     console.info('Opening Modal...');
@@ -50,12 +53,12 @@ function openModal() {
       closeModal();
       updateButtonText();
       modalCounter.innerText = counter;
-      hiddenModalQuantity.value = counter;
+      formHiddenModalQuantity.value = counter;
     }, seconds);
   }
 
   function addOrder() {
-    modalSubmitButtonValue.setAttribute("value", `Added!`);
+    modalSubmitButtonText.setAttribute("value", `Added!`);
     resetModal(700);
   }
 
@@ -66,7 +69,7 @@ function openModal() {
   }
 
   function updateButtonText() {
-    modalSubmitButtonValue.setAttribute("value", `Add ${counter} to Order`)
+    modalSubmitButtonText.setAttribute("value", `Add ${counter} to Order`)
   }
 
   function checkOptionsChecked(something) {
@@ -84,7 +87,7 @@ function openModal() {
       counter += 1;
       modalCounter.innerText = counter;
       updateButtonText();
-      hiddenModalQuantity.value = counter;
+      formHiddenModalQuantity.value = counter;
       modalButtonPrice.innerText = `$${itemPrice * counter}`;
     } else {
       if (counter === 1) {
@@ -93,7 +96,7 @@ function openModal() {
       counter -= 1;
       modalCounter.innerText = counter;
       updateButtonText();
-      hiddenModalQuantity.value = counter;
+      formHiddenModalQuantity.value = counter;
       modalButtonPrice.innerText = `$${itemPrice * counter}`;
       }
     }
@@ -115,7 +118,7 @@ function openModal() {
     modal.querySelector('h2').textContent = el.dataset.name;
     modal.querySelector('p').textContent = el.dataset.description;
     buttonPrice.innerText = el.dataset.price;
-    hiddenItemId.value = el.dataset.id;
+    formHiddenItemId.value = el.dataset.id;
     currentItem = el;
     modalInner.scrollTop = 0;
     const itemOptionsArray = JSON.parse(el.dataset.options);
@@ -125,14 +128,12 @@ function openModal() {
     optionPrices = JSON.parse(el.dataset.prices);
     let optionPriceCount = 0;
     itemOptionsArray.forEach((option) => {
-
-          optionsSection.insertAdjacentHTML('afterbegin', `<div style="display: flex; justify-content: space-between; align-items: center;"><div><input class="options-checked" id=${option} type="checkbox" name="options[]" value=${option} data-prices2="${optionPrices[optionPriceCount]}">
+      optionsSection.insertAdjacentHTML('afterbegin', `<div style="display: flex; justify-content: space-between; align-items: center;"><div><input class="options-checked" id=${option} type="checkbox" name="options[]" value=${option} data-prices2="${optionPrices[optionPriceCount]}">
         <label for=${option}>${option}</label></div><h6>+${optionPrices[optionPriceCounter]}</h6></div>
         <br>`)
-        optionPriceCounter += 1;
-        optionPriceCount += 1;
-        })
-        ;
+      optionPriceCounter += 1;
+      optionPriceCount += 1;
+    });
     itemPrice = parseInt(el.dataset.price, 10);
     modalButtonPrice.innerText = `$${itemPrice}`;
 
@@ -142,16 +143,17 @@ function openModal() {
          checkbox.addEventListener('click', (e) => checkOptionsChecked(e.currentTarget));
          };
 
-
     openModal();
   }
 
-// These are our event listeners
-// foodItem.addEventListener('click', openModal);
+
+
+// Event listeners
+
 modal.addEventListener('click', handleClickOutside);
-items.forEach(image => image.addEventListener('click', (e) => showItem(e.currentTarget)));
-minusQuantity.addEventListener('click', () => changeQuantity('minus'));
-plusQuantity.addEventListener('click', () => changeQuantity('plus'));
+foodItems.forEach(image => image.addEventListener('click', (e) => showItem(e.currentTarget)));
+minusQuantityButton.addEventListener('click', () => changeQuantity('minus'));
+plusQuantityButton.addEventListener('click', () => changeQuantity('plus'));
 modalForm.addEventListener('submit', addOrder);
 
 
