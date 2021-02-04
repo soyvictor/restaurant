@@ -1,23 +1,31 @@
-<div style="position: relative; top: 65px;" >
-  <h1>Shopping Cart</h1>
+<div class="shopping-cart-container" >
+  <h1>Your Order</h1>
   <% @shopping_cart.each do |user_item| %>
-    <div style="border: 1px solid black;">
-    <%= user_item.item.name %>
-      <br>
-      <%= user_item.quantity %>
-      <% if user_item.special_instructions.length > 0 %>
-      <br>
-      <%= user_item.special_instructions %>
-      <% end %>
-      <br>
-      <%= user_item.quantity * user_item.item.price %>
-      <% unless user_item.options.nil? %>
-      <% user_item.options.each do |option| %>
-        <% itemOption = ItemOption.find(option) %>
-        <p><%= itemOption.name %></p>
-      <% end %>
-      <% end %>
-      <%= link_to 'delete item', user_item_path(user_item), method: :delete, data: { confirm: "Are you sure?" }, html_input: { } %>
+    <div style="display: flex; flex-direction: row; border: 1px solid black; justify-content: space-between; padding: 16px;">
+      <div>
+        <h4><%= user_item.item.name %></h4>
+        <% unless user_item.options.nil? %>
+        <p>Options:
+          <% user_item.options.each do |option| %>
+            <% itemOption = ItemOption.find(option) %>
+            <%= itemOption.name %>
+          <% end %>
+        </p>
+        <% end %>
+        <% if user_item.special_instructions.length > 0 %>
+          <p>Special Notes: <%= user_item.special_instructions %></p>
+        <% end %>
+      </div>
+
+      <div>
+      <p><strong>Quantity</strong></p>
+      <div style="display: flex;">
+        <p style="margin-right: 4px;"><%= user_item.quantity %></p>
+        <p><%= link_to 'Delete', user_item_path(user_item), method: :delete, data: { confirm: "Are you sure?" }, html_input: { } %></p>
+      </div>
+      <p>Subtotal: <%= user_item.quantity * user_item.item.price %></p>
+
+      </div>
     </div>
   <% end %>
 
