@@ -94,7 +94,7 @@
 
 .modal-sections {
   background-color: hsla(116, 0%, 96%, 1.00);
-  padding: 0 0 0 24px;
+  padding: 0 0 0 20px;
   width: 100%;
 }
 
@@ -189,13 +189,31 @@ body.closed {
 
 .special-notes {
   width: 90%;
-  height: 100px;
+  height: 60px;
   margin: 0 auto;
   padding-top: 8px;
-  padding-left: 24px;
+  padding-left: 20px;
 }
 
 .minus-quantity, .plus-quantity {
   cursor: pointer;
+}
+
+input[type=checkbox] {
+    transform: scale(1.4);
+}
+
+input[type=checkbox]:hover {
+    cursor: pointer;
+}
+
+.modal-form-label {
+  padding-left: 8px;
+  margin: 0px;
+  margin-top: 8px;
+}
+
+textarea {
+  resize: none;
 }
 

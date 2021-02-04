@@ -8,7 +8,7 @@ const modalCounter = modalInner.querySelector('.modalCounter');
 const modalForm = modalInner.querySelector('.modalForm');
 const modalSubmitButtonText = modalInner.querySelector('.modal-button');
 const foodItems = document.querySelectorAll('.item');
-const buttonPrice = modalInner.querySelector('.button-price'); // should rename this
+// const buttonPrice = modalInner.querySelector('.button-price'); // should rename this
 const formHiddenModalQuantity = document.getElementById('modalQuantity');
 const formHiddenItemId = document.getElementById('itemId');
 const optionsSection = document.querySelector('.options-section');
@@ -117,7 +117,7 @@ function openModal() {
     modal.querySelector('img').src = source
     modal.querySelector('h2').textContent = el.dataset.name;
     modal.querySelector('p').textContent = el.dataset.description;
-    buttonPrice.innerText = el.dataset.price;
+    // buttonPrice.innerText = el.dataset.price;
     formHiddenItemId.value = el.dataset.id;
     currentItem = el;
     modalInner.scrollTop = 0;
@@ -128,9 +128,7 @@ function openModal() {
     optionPrices = JSON.parse(el.dataset.prices);
     let optionPriceCount = 0;
     itemOptionsArray.forEach((option) => {
-      optionsSection.insertAdjacentHTML('afterbegin', `<div style="display: flex; justify-content: space-between; align-items: center;"><div><input class="options-checked" id=${option} type="checkbox" name="options[]" value=${option} data-prices2="${optionPrices[optionPriceCount]}">
-        <label for=${option}>${option}</label></div><h6>+${optionPrices[optionPriceCounter]}</h6></div>
-        <br>`)
+      optionsSection.insertAdjacentHTML('afterbegin', `<div style="display: flex; justify-content: space-between; align-items: center;"><div><input class="options-checked" id=${option} type="checkbox" name="options[]" value=${option} data-prices2="${optionPrices[optionPriceCount]}"><label class="modal-form-label" for=${option}>${option}</label></div>+${optionPrices[optionPriceCounter]}</div>`)
       optionPriceCounter += 1;
       optionPriceCount += 1;
     });
