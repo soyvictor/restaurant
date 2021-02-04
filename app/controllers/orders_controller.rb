@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
-        name: "Victor's test",
+        name: "Test Order",
         amount: order.amount_cents,
         currency: 'mxn',
         quantity: 1
@@ -35,23 +35,23 @@ class OrdersController < ApplicationController
   end
 
   def create
-      # order = current_user.orders.find_by(state: "pending")
-      if current_user.orders.find_by(state: "pending")
-        order = current_user.orders.find_by(state: "pending")
-        current_user.user_items.each do |user_item|
-          user_item.order = order
-          user_item.save!
-        end
-        updateOrderQuantityAmount(order)
-      else
-        order = Order.new
-        order.user = current_user
-        order.save!
-        current_user.user_items.each do |user_item|
-          user_item.order = order
-          user_item.save!
-        end
-        updateOrderQuantityAmount(order)
+    if current_user.orders.find_by(state: "pending")
+      order = current_user.orders.find_by(state: "pending")
+      current_user.user_items.each do |user_item|
+        user_item.order = order
+        user_item.save!
       end
+      updateOrderQuantityAmount(order)
+    else
+      order = Order.new
+      order.user = current_user
+      order.save!
+      current_user.user_items.each do |user_item|
+        user_item.order = order
+        user_item.save!
+      end
+      updateOrderQuantityAmount(order)
+    end
   end
+
 end

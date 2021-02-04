@@ -40,9 +40,4 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :description, :category, :price, :photo)
   end
-
-  def find_item
-    @item = Item.find(params[:id])
-  end
-
 end

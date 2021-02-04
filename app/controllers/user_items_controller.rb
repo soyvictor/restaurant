@@ -1,6 +1,5 @@
 class UserItemsController < ApplicationController
   def index
-    # @cart = UserItem.all
     @shopping_cart = UserItem.where(user: current_user, state: "pending")
     @shoppingCartPriceCounter = 0
     @shoppingCartQuantity = 0
@@ -8,10 +7,9 @@ class UserItemsController < ApplicationController
       @shoppingCartPriceCounter += (user_item.item.price * user_item.quantity)
       @shoppingCartQuantity += user_item.quantity
       user_item.options.each do |option|
-       @shoppingCartPriceCounter += (ItemOption.find(option).price * user_item.quantity)
+        @shoppingCartPriceCounter += (ItemOption.find(option).price * user_item.quantity)
       end
     end
-
     # if shopping_cart = current_user.orders.find_by(state: "pending")
     #   @shopping_cart_total = shopping_cart.amount
     #   @shopping_cart_quantity = shopping_cart.quantity
@@ -54,18 +52,17 @@ class UserItemsController < ApplicationController
     #   theItem.save!
     #   # updateOrderQuantityAmount(theItem.order)
     # else
-      @user_item = UserItem.new
-      @user_item.item = Item.find(params["itemId"])
-      @user_item.special_instructions = params["specialNotes"]
-      @user_item.quantity = params["modalQuantity"]
-      @user_item.user = current_user
-      if params["options"]
-        options = params["options"]
-        options.each do |option|
-          @user_item.options << ItemOption.find_by(name: option).id.to_i
-        end
+    @user_item = UserItem.new
+    @user_item.item = Item.find(params["itemId"])
+    @user_item.special_instructions = params["specialNotes"]
+    @user_item.quantity = params["modalQuantity"]
+    @user_item.user = current_user
+    if options = params["options"]
+      options.each do |option|
+        @user_item.options << ItemOption.find_by(name: option).id.to_i
       end
-      @user_item.save!
+    end
+    @user_item.save!
       # if current_user.orders.find_by(state: "pending")
       #   current_order = current_user.orders.find_by(state: "pending")
       #   @user_item.order = current_order
@@ -79,7 +76,7 @@ class UserItemsController < ApplicationController
       #   @user_item.save!
       #   updateOrderQuantityAmount(new_order)
       # end
-    end
+  end
 
   def edit
   end
@@ -89,7 +86,8 @@ class UserItemsController < ApplicationController
     if @user_item.state = "pending"
       @user_item.destroy
     # no need for app/views/restaurants/destroy.html.erb
-    redirect_to user_items_path
+      redirect_to user_items_path
     end
   end
+
 end
