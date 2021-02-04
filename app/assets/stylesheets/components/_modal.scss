@@ -157,7 +157,7 @@ body.closed {
 
 .add-to-cart {
   border-top: .5px solid hsla(116, 0%, 89%, 1.00);
-  padding: 1rem .5rem;
+  padding: 1rem 1.2rem;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -179,7 +179,8 @@ body.closed {
   width: 100%;
 }
 .counter {
-  padding: 0 1rem;
+  padding: 0px;
+  padding-right: 1.5rem;
 }
 
 .counterText {
