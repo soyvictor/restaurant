@@ -1,6 +1,6 @@
 <div class="shopping-cart-container" >
   <h1>Your Order</h1>
-  <% @shopping_cart.order("created_at desc").each do |user_item| %>
+  <% @shopping_cart.order("created_at asc").each do |user_item| %>
     <div class="shopping-cart-card" style="display: flex; flex-direction: row; border: 1px solid black; justify-content: space-between; padding: 16px;" data-quant="<%= user_item.quantity %>">
       <div>
         <h4><%= user_item.item.name %></h4>
