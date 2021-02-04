@@ -110,7 +110,6 @@ function openModal() {
       console.info('item');
       return
     }
-
     // update the modal with this info
     // const image = el.querySelector('img');
     // const source = `http://res.cloudinary.com/vc334/image/upload/${el.dataset.photo}`;
