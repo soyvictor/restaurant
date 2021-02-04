@@ -1,7 +1,7 @@
 <div class="shopping-cart-container" >
   <h1>Your Order</h1>
   <% @shopping_cart.each do |user_item| %>
-    <div style="display: flex; flex-direction: row; border: 1px solid black; justify-content: space-between; padding: 16px;">
+    <div class="shopping-cart-card" style="display: flex; flex-direction: row; border: 1px solid black; justify-content: space-between; padding: 16px;" data-quant="<%= user_item.quantity %>">
       <div>
         <h4><%= user_item.item.name %></h4>
         <% unless user_item.options.nil? %>
@@ -17,10 +17,27 @@
         <% end %>
       </div>
 
-      <div>
-      <p><strong>Quantity</strong></p>
+      <div> <p><strong>Quantity</strong></p>
       <div style="display: flex;">
-        <p style="margin-right: 4px;"><%= user_item.quantity %></p>
+        <!-- <p style="margin-right: 4px;"><%= user_item.quantity %></p> -->
+        <form>
+          <select id="lunch" name="lunch">
+            <option class="quantity-form-option" value="1">1</option>
+            <option class="quantity-form-option" value="2">2</option>
+            <option class="quantity-form-option" value="3">3</option>
+            <option class="quantity-form-option" value="4">4</option>
+            <option class="quantity-form-option" value="5">5</option>
+            <option class="quantity-form-option" value="6">6</option>
+            <option class="quantity-form-option" value="7">7</option>
+            <option class="quantity-form-option" value="8">8</option>
+            <option class="quantity-form-option" value="9">9</option>
+            <option class="quantity-form-option" value="10">10</option>
+            <option class="quantity-form-option" value="11">11</option>
+            <option class="quantity-form-option" value="12">12</option>
+            <option class="quantity-form-option" value="13">13</option>
+            <option class="quantity-form-option" value="14">14</option>
+          </select>
+        </form>
         <p><%= link_to 'Delete', user_item_path(user_item), method: :delete, data: { confirm: "Are you sure?" }, html_input: { } %></p>
       </div>
       <p>Subtotal: <%= user_item.quantity * user_item.item.price %></p>
@@ -41,3 +58,5 @@
   <h1>You have not added any items to your shopping cart!</h1>
   <% end %>
 </div>
+
+<%= javascript_pack_tag 'shopping_cart' %>
