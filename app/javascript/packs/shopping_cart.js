@@ -1,5 +1,9 @@
 const shoppingCartCards = document.querySelectorAll('.shopping-cart-card');
 
+function doSomething(form) {
+  form.submit();
+}
+
 function setDefaultQuantity(card) {
   console.log(card);
   const formOptions = card.querySelectorAll('.quantity-form-option');
@@ -8,6 +12,9 @@ function setDefaultQuantity(card) {
       option.selected = true;
     }
   });
+  const quantityDropDown = card.querySelector('.quantity-list');
+  console.log(quantityDropDown)
+  quantityDropDown.addEventListener('change', (e) => doSomething(e.currentTarget));
 }
 
 
@@ -20,3 +27,5 @@ function setDefaultQuantity(card) {
 shoppingCartCards.forEach((card) => {
   setDefaultQuantity(card)
 });
+
+

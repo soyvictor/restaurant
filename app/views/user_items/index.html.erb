@@ -1,6 +1,6 @@
 <div class="shopping-cart-container" >
   <h1>Your Order</h1>
-  <% @shopping_cart.each do |user_item| %>
+  <% @shopping_cart.order("created_at desc").each do |user_item| %>
     <div class="shopping-cart-card" style="display: flex; flex-direction: row; border: 1px solid black; justify-content: space-between; padding: 16px;" data-quant="<%= user_item.quantity %>">
       <div>
         <h4><%= user_item.item.name %></h4>
@@ -20,8 +20,9 @@
       <div> <p><strong>Quantity</strong></p>
       <div style="display: flex;">
         <!-- <p style="margin-right: 4px;"><%= user_item.quantity %></p> -->
-        <form>
-          <select id="lunch" name="lunch">
+        <form class="quantity-list" action="<%= updateQuantity_user_item_path(user_item) %>" method="POST">
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+          <select name="modalQuantity">
             <option class="quantity-form-option" value="1">1</option>
             <option class="quantity-form-option" value="2">2</option>
             <option class="quantity-form-option" value="3">3</option>

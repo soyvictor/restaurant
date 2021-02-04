@@ -90,4 +90,11 @@ class UserItemsController < ApplicationController
     end
   end
 
+  def updateQuantity
+    @user_item = UserItem.find(params[:id])
+    @user_item.quantity = params["modalQuantity"]
+    @user_item.save!
+    redirect_to user_items_path
+  end
+
 end

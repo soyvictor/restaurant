@@ -6,7 +6,14 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :items, only: [:index, :show, :new, :edit, :create]
   resources :categories, only: [:new, :edit, :create]
-  resources :user_items, only: [:index, :create, :destroy]
+  resources :user_items, only: [:index, :create, :destroy] do
+    member do
+    post :updateQuantity
+    end
+  end
+
+
+
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
   end
