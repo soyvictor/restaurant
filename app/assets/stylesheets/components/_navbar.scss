@@ -1,15 +1,17 @@
-header {
+// Header Desktop
+
+header.header-desktop {
   width: 100%;
   position: fixed;
   z-index: 1;
   background-color: hsla(115, 100%, 100%, 1.00);
+  display: none;
 }
 
 nav {
   height: 65px;
   width: 95%;
   margin: 0 auto;
-  display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
@@ -50,6 +52,32 @@ nav li {
 
 }
 
+// Header Mobile
+
+header.header-mobile {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  background-color: hsla(115, 100%, 100%, 1.00);
+  display: none;
+  align-items: center;
+}
+
+header.header-mobile nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 8px;
+}
+
+.hamburger-icon {
+  font-size: 1.3rem;
+}
+
+.hamburger-icon:hover {
+  cursor: pointer;
+}
+
 
 
 
@@ -68,4 +96,21 @@ lewagon template navbar DO NOT USE
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+
+
+// Media Queries
+
+@media only screen and (min-width: 992px) {
+  header.header-desktop {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  header.header-mobile {
+    display: block;
+  }
+}
+
 
