@@ -1,10 +1,11 @@
 <div class="shopping-cart-container" >
   <h1>Your Order</h1>
+  <div style="border: 1px solid hsla(116, 0%, 81%, 1.00); padding: 24px;">
   <% @shopping_cart.order("created_at asc").each do |user_item| %>
-    <div class="shopping-cart-card" style="display: flex; flex-direction: row; border: 1px solid black; justify-content: space-between; padding: 16px;" data-quant="<%= user_item.quantity %>">
+    <div class="shopping-cart-card" style="display: flex; flex-direction: row; border-bottom: 1px solid hsla(116, 0%, 85%, 1.00); justify-content: space-between; padding: 16px;" data-quant="<%= user_item.quantity %>">
       <div>
-        <h4><%= user_item.item.name %></h4>
-        <% unless user_item.options.nil? %>
+        <h6><%= user_item.item.name %></h6>
+        <% unless user_item.options.length == 0 %>
         <p>Options:
           <% user_item.options.each do |option| %>
             <% itemOption = ItemOption.find(option) %>
@@ -46,6 +47,7 @@
       </div>
     </div>
   <% end %>
+</div>
 
   Total: <%= @shoppingCartPriceCounter %>
   Quantity: <%= @shoppingCartQuantity %>
