@@ -198,6 +198,19 @@ body.closed {
 
 .minus-quantity, .plus-quantity {
   cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.modalCounter {
+  font-size: 2rem;
+}
+
+.modal-button {
+  font-size: .8rem;
+}
+
+.modal-button-price {
+  font-size: .6rem;
 }
 
 input[type=checkbox] {
@@ -216,5 +229,14 @@ input[type=checkbox]:hover {
 
 textarea {
   resize: none;
+}
+
+// Mobile Media Queries
+
+@media only screen and (max-width: 992px) {
+  .modalInner {
+    width: 90vw;
+    height: 90vh;
+  }
 }
 

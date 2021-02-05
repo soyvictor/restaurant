@@ -70,13 +70,63 @@ header.header-mobile nav {
   padding: 0px 8px;
 }
 
-.hamburger-icon {
+.hamburger-button {
   font-size: 1.3rem;
 }
 
-.hamburger-icon:hover {
+.hamburger-button:hover {
   cursor: pointer;
 }
+
+// Mobile Navbar
+
+// Modal Outside
+
+.modalOutside {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  // display: grid;
+  // align-items: center;
+  // justify-items: center;
+  pointer-events: none;
+  opacity: 0;
+  // transition: opacity 0.3s;
+}
+
+.modalOutside.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+// Modal Inside
+.modalInside {
+  position: relative;
+  z-index: 1000;
+  // border-radius: 3px;
+  background: white;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+  transform: translateX(-100vw);
+  transition: all 0.3s;
+  width: 60vw;
+  height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-start;
+  // align-items: flex-start;
+  // text-align: left;
+  // color: black;
+  // overflow: scroll;
+}
+
+.modalOutside.open .modalInside {
+  transform: translateX(0);
+}
+
 
 
 
