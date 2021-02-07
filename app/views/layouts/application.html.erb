@@ -50,6 +50,13 @@
    <div class="modalOutside">
      <div class="modalInside" style="position: relative;">
         <h1>hello</h1>
+        <ul>
+          <li><%= link_to "Home", root_path %></li>
+           <li><%= link_to "Admin", user_admins_path(current_user) %></li>
+          <li><a href="#order">Order | Menu</a></li>
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
        <!-- <i class="fas fa-times-circle modal-close-button"></i> -->
      </div>
    </div>
