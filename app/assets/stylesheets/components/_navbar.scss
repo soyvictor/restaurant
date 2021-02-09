@@ -8,10 +8,11 @@ header.header-desktop {
   display: none;
 }
 
-nav {
-  height: 65px;
+nav.nav-desktop {
+  height: 75px;
   width: 95%;
   margin: 0 auto;
+  display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
@@ -23,14 +24,14 @@ nav {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, .5);
 }
 
-nav ul {
+nav.nav-desktop ul {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 0;
 }
 
-nav li {
+nav.nav-desktop li {
   list-style: none;
   padding: 12px;
 }

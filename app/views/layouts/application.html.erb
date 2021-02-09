@@ -12,7 +12,7 @@
   <body>
     <!-- <%= render 'shared/navbar' %> -->
    <header class="header-desktop">
-      <nav>
+      <nav class="nav-desktop">
         <% itemsCount = 0 %>
         <% if user_signed_in? %>
         <% if current_user.user_items.where(state: "pending") %>
