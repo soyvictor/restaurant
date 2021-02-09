@@ -18,11 +18,6 @@ function setDefaultQuantity(card) {
 }
 
 
-
-
-
-
-
 // Initialize on page load
 shoppingCartCards.forEach((card) => {
   setDefaultQuantity(card)
