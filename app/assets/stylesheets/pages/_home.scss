@@ -101,11 +101,17 @@
   }
 
   .banner-container {
-    height: calc(.4 * (100vh - 75px))
+    height: calc(.3 * (100vh - 75px))
   }
 
   .info {
-    // height: calc(.6 * (100vh - 75px))
+    height: calc(.4 * (100vh - 75px))
+  }
+
+  .heading-menu {
+    height: calc(.3 * (100vh - 75px));
+    display: flex;
+    align-items: flex-end;
   }
 }
 
