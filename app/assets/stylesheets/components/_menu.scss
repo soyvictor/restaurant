@@ -31,3 +31,35 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
+
+.item {
+  transition: all .3s;
+}
+
+.item:hover {
+  box-shadow: 1px 1px 8px hsla(0, 0%, 0%, 0.2);
+  transform: translateY(-2px);
+}
+
+// Categories List Desktop
+ul.categories-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  // border-bottom: 1px solid hsla(116, 0%, 90%, 1.00);
+  // margin: 16px 0px;
+  list-style: none;
+  width: 80%;
+  margin: 0px auto;
+}
+
+hr {
+  margin: 0;
+  margin-top: 4px;
+}
+
+ul.categories-list li {
+  padding: 0px;
+  padding-right: 16px;
+  font-weight: 400;
+}

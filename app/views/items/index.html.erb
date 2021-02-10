@@ -13,19 +13,25 @@
     </div>
   </div>
 
-  <div class="regular-container mobileMenu">
+  <div class="regular-container mobileMenu" style="margin-bottom: 1rem;">
     <div class="menu">
       <div class="heading-menu">
-        <h3 id="order">MENU <i class="fas fa-caret-down" style="font-size: 20px;"></i></h3>
+        <h3 id="order">Menu <i class="fas fa-caret-down" style="font-size: 20px;"></i></h3>
       </div>
+    </div>
+  </div>
+
       <div>
         <ul class="categories-list">
           <% @categories.each do |category| %>
             <li><%= category.name%></li>
           <% end %>
         </ul>
+        <hr>
       </div>
 
+
+      <div class="regular-container mobileMenu">
         <div class="menu-items">
           <% @categories.each do |category| %>
             <div class="test-category menu-category">
@@ -33,10 +39,11 @@
               <ul>
                 <div class="menu-grid">
                 <% category.items.each do |item| %>
+                <a class="item" data-photo="<%= item.photo.key %>" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>" data-prices="<%= item.item_options.map do |item_option| humanized_money(item_option.price) end %>">
                 <div style="width: 360px; height: 120px;" class="menu-item">
                   <div style="width: 70%; padding: 8px; display:flex; flex-direction: column; justify-content: space-between;">
                   <div>
-                  <a class="item" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>" data-prices="<%= item.item_options.map do |item_option| humanized_money(item_option.price) end %>"><strong><%= item.name %></strong></a>
+                <span style="font-weight: 700;"><%= item.name %></span>
 
 
                       <p style="font-size: 14px; font-weight: 300;"><%= item.description %></p>
@@ -48,6 +55,7 @@
 
 
                 </div>
+                </a>
                 <% end %>
               </div>
               </ul>
@@ -109,13 +117,13 @@
 
   <div class="regular-container">
     <div class="about">
-      <h3 id="about-us">ABOUT US</h3>
+      <h3 id="about-us">About Us</h3>
       <p>Enrique Olvera abrió Pujol en la ciudad de México en el 2000. Su cocina siempre está transformándose; abreva ideas de aquí y de allá, reinterpreta y evoluciona, pero tiene las raíces puestas en los ingredientes y las técnicas mexicanas de todos los tiempos.</p>
     </div>
   </div>
 
   <div class="regular-container">
-    <h3 id="contact">CONTACT</h3>
+    <h3 id="contact">Contact</h3>
     <div class="contact">
       <div class="contact-text">
         <div>
