@@ -101,18 +101,36 @@
   }
 
   .banner-container {
-    height: calc(.3 * (100vh - 75px))
-  }
-
-  .info {
     height: calc(.4 * (100vh - 75px))
   }
 
-  .heading-menu {
-    height: calc(.3 * (100vh - 75px));
-    display: flex;
-    align-items: flex-end;
+  .regular-container.info {
+    height: calc(.5 * (100vh - 75px))
   }
+
+  // .heading-menu {
+  //   height: calc(.3 * (100vh - 75px));
+  //   display: flex;
+  //   align-items: flex-end;
+  // }
+
+  // .regular-container.mobileMenu {
+  //   margin-top: 0px;
+  //   // height: calc(.3 * (100vh - 75px));
+  //   // display: flex;
+  //   // align-items: flex-end;
+  // }
+
+  //   .regular-container.mobileInfo {
+  //   margin-bottom: 0px;
+  //   // height: calc(.3 * (100vh - 75px));
+  //   // display: flex;
+  //   // align-items: flex-end;
+  // }
+
+
+
+
 }
 
 
