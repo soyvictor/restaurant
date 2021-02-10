@@ -88,6 +88,20 @@
   z-index: 0;
 }
 
+// Categories List Desktop
+ul.categories-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid hsla(116, 0%, 90%, 1.00);
+}
+
+ul.categories-list li {
+  padding: 0px;
+  padding-right: 12px;
+}
+
+
 // Media Queries
 
 @media only screen and (min-width: 992px) {
