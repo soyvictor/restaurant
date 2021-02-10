@@ -33,18 +33,18 @@
               <ul>
                 <div class="menu-grid">
                 <% category.items.each do |item| %>
-                <div style="width: 350px; height: 150px;" class="menu-item">
-                  <div style="width: 70%; padding: 8px;">
+                <div style="width: 360px; height: 120px;" class="menu-item">
+                  <div style="width: 70%; padding: 8px; display:flex; flex-direction: column; justify-content: space-between;">
                   <div>
                   <a class="item" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>" data-prices="<%= item.item_options.map do |item_option| humanized_money(item_option.price) end %>"><strong><%= item.name %></strong></a>
 
 
-                      <p style="font-size: 14px;"><%= item.description %></p>
+                      <p style="font-size: 14px; font-weight: 300;"><%= item.description %></p>
                     </div>
-                      <p style="font-size: 14px;"><%= item.price %></p>
+                      <p style="font-size: 14px;"><strong>$<%= item.price %></strong></p>
 
                   </div>
-                      <%= cl_image_tag item.photo.key, size:"100x150" %>
+                      <%= cl_image_tag item.photo.key, crop: :fill, gravity: :center, style: "height: 100%; width: 30%; object-fit: cover" %>
 
 
                 </div>

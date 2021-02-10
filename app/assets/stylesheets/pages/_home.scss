@@ -47,7 +47,6 @@
 }
 
 .about {
-  // background-color: grey;
   text-align: left;
 }
 
@@ -94,11 +93,13 @@ ul.categories-list {
   justify-content: flex-start;
   align-items: center;
   border-bottom: 1px solid hsla(116, 0%, 90%, 1.00);
+  margin: 16px 0px;
 }
 
 ul.categories-list li {
   padding: 0px;
-  padding-right: 12px;
+  padding-right: 16px;
+  font-weight: 400;
 }
 
 
