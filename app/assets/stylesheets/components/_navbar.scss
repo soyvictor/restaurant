@@ -68,7 +68,7 @@ header.header-mobile nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 16px;
+  padding: 0px 20px;
   height: 75px;
 }
 
@@ -80,7 +80,13 @@ header.header-mobile nav {
   cursor: pointer;
 }
 
-// Mobile Navbar
+#main-logo {
+  font-size: 1.4rem;
+  color: #376977;
+  font-family: lato;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
 
 // Modal Outside
 

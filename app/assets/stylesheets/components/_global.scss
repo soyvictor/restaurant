@@ -2,6 +2,7 @@ html, * {
   margin: 0;
   padding: 0;
   color: black;
+  font-family: 'lato';
 }
 
 a, a:hover, a:visited {
@@ -13,7 +14,7 @@ a, a:hover, a:visited {
 .regular-container {
   width: 80%;
   padding: 0;
-  margin: 48px auto 0 auto;
+  margin: 3rem auto 3rem auto;
 }
 
 .pos-relative {
