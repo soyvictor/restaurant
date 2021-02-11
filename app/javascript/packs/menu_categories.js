@@ -1,5 +1,6 @@
 // Declarations
-
+const categoryNameFirst = document.querySelector('.category-name');
+console.log(categoryNameFirst);
 const categoryNames = document.querySelectorAll('.category-name');
 let categorySelected = undefined;
 
@@ -44,3 +45,7 @@ categoryNames.forEach((name) => {
 categoryNames.forEach((name) => {
   name.addEventListener('mouseout', underlineCategorySelected);
 });
+
+// Initializer
+categoryNameFirst.classList.add('categoryNameHighlight');
+
