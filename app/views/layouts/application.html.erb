@@ -25,7 +25,7 @@
           <!-- <%= image_tag "sample_logo.png", alt: "restaurant logo", class: "header-logo" %> -->
          <ul>
            <li><%= link_to "Home", root_path %></li>
-           <li><a href="#order">Order | Menu</a></li>
+           <li><a href="#order">Order</a></li>
            <!-- <li><a href="">Order</a></li> -->
            <!-- <li><a href="">Promotions</a></li> -->
            <li><%= link_to "Admin", user_admins_path(current_user) %></li>
@@ -65,7 +65,7 @@
         <ul>
           <li></li>
 
-          <li><a href="#order">Order | Menu</a></li>
+          <li><a href="#order">Order</a></li>
           <li><a href="#about-us">About Us</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -78,6 +78,7 @@
     <%= yield %>
     <%= yield(:modal) %>
     <%= yield(:shopping_cart) %>
+    <%= yield(:menu_categories) %>
     <%= javascript_pack_tag 'mobile_navbar' %>
   </body>
 </html>

@@ -24,7 +24,7 @@
       <div>
         <ul class="categories-list">
           <% @categories.each do |category| %>
-            <li><%= category.name%></li>
+            <li class="category-name"><%= category.name%></li>
           <% end %>
         </ul>
         <hr>
@@ -34,8 +34,8 @@
       <div class="regular-container mobileMenu">
         <div class="menu-items">
           <% @categories.each do |category| %>
-            <div class="test-category menu-category">
-              <h5><strong><%= category.name %></strong></h5>
+            <div class="test-category menu-category"  style="margin-top: 40px;">
+              <h4 style="margin-bottom: 24px;"><strong><%= category.name %></strong></h4>
               <ul>
                 <div class="menu-grid">
                 <% category.items.each do |item| %>
@@ -203,3 +203,4 @@
 
 
 <%= javascript_pack_tag 'modal' %>
+<%= javascript_pack_tag 'menu_categories' %>

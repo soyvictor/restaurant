@@ -28,7 +28,7 @@
 
 .menu-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
 
@@ -55,11 +55,28 @@ ul.categories-list {
 
 hr {
   margin: 0;
-  margin-top: 4px;
+  padding-top: 8px;
 }
 
 ul.categories-list li {
   padding: 0px;
   padding-right: 16px;
+  padding-left: 16px;
   font-weight: 400;
+  border-bottom: 3px solid white;
+}
+
+ul.categories-list li.categoryNameHighlight {
+  border-bottom: 3px solid hsla(360, 72%, 48%, 1.00);
+  cursor: pointer;
+}
+
+// ul.categories-list li:first-of-type {
+//   border-bottom: 3px solid hsla(360, 72%, 48%, 1.00);
+//   cursor: pointer;
+// }
+
+ul.categories-list li:hover {
+  border-bottom: 3px solid hsla(360, 72%, 48%, 1.00);
+  cursor: pointer;
 }
