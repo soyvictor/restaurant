@@ -52,85 +52,32 @@
       <div class="regular-container mobileMenu">
         <div class="menu-items">
           <% @categories.each do |category| %>
-            <div class="test-category menu-category"  style="margin-top: 40px;">
+            <div class="menu-category"  style="margin-top: 40px;">
               <h4 style="margin-bottom: 24px;"><strong><%= category.name %></strong></h4>
               <ul>
                 <div class="menu-grid">
                 <% category.items.each do |item| %>
-                <a class="item" data-photo="<%= item.photo.key %>" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>" data-prices="<%= item.item_options.map do |item_option| humanized_money(item_option.price) end %>">
-                <div style="width: 360px; height: 120px;" class="menu-item">
-                  <div style="width: 70%; padding: 8px; display:flex; flex-direction: column; justify-content: space-between;">
-                  <div>
-                <span style="font-weight: 700;"><%= item.name %></span>
+                  <a class="item" data-photo="<%= item.photo.key %>" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>" data-prices="<%= item.item_options.map do |item_option| humanized_money(item_option.price) end %>">
+                    <div class="menu-item">
+                      <div class="menu-item-left" style="width: 70%; padding: 8px; display:flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                          <span style="font-weight: 700;"><%= item.name %></span>
+                          <p style="font-size: 14px; font-weight: 400; color: hsla(116, 0%, 60%, 1.00);"><%= item.description %></p>
+                        </div>
+                        <p style="font-size: 14px; margin-bottom: 0px;"><strong>$<%= item.price %></strong></p>
+                      </div>
 
+                        <%= cl_image_tag item.photo.key, crop: :fill, gravity: :center, class: "photo-menu", style: "height: 100%; width: 30%; object-fit: cover;" %>
 
-                      <p style="font-size: 14px; font-weight: 400; color: hsla(116, 0%, 60%, 1.00);"><%= item.description %></p>
                     </div>
-                      <p style="font-size: 14px; margin-bottom: 0px;"><strong>$<%= item.price %></strong></p>
-
-                  </div>
-                      <%= cl_image_tag item.photo.key, crop: :fill, gravity: :center, style: "height: 100%; width: 30%; object-fit: cover" %>
-
-
-                </div>
-                </a>
+                  </a>
                 <% end %>
-              </div>
+                </div>
               </ul>
             </div>
           <% end %>
-
-<!--         <div class="tortas menu-category">
-          <h5><strong>TORTAS</strong></h5>
-          <ul>
-            <li><a class="testItem">Torta de pierna</a></li>
-            <li><a>Torta de pollo</a></li>
-            <li><a>Torta de milanesa</a></li>
-            <li><a>Torta de chuleta</a></li>
-            <li><a>Torta de chuleta</a></li>
-            <li><a>Torta de bistec</a></li>
-            <li><a>Torta de milanesa de pollo</a></li>
-            <li><a>Torta de milanesa de pollo con queso</a></li>
-          </ul>
-        </div>
-
-        <div class="hamburugesas menu-category">
-          <h5><strong>HAMBURGUESAS</strong></h5>
-          <ul>
-            <li><a>Hamburguesa con queso amarillo</a></li>
-            <li><a>Hamburguesa con quesillo</a></li>
-            <li><a>Hamburguesa con jamón y queso amarillo</a></li>
-            <li><a>Hamburgusa con tocino y queso amarillo</a></li>
-            <li><a>Hamburguesa con piña y quesillo</a></li>
-            <li><a>Hamburguesa Hawaina</a></li>
-            <li><a>Hamburguesa doble carne con queso</a></li>
-          </ul>
-        </div>
-
-        <div class="sides menu-category">
-          <h5><strong>SIDES</strong></h5>
-          <ul>
-            <li><a>Papas</a></li>
-            <li><a>Papas fritos</a></li>
-            <li><a>Macaroni</a></li>
-            <li><a>Bread sticks</a></li>
-          </ul>
-        </div>
-
-        <div class="bebidas menu-category">
-          <h5><strong>BEBIDAS</strong></h5>
-          <ul>
-            <li><a>Refresco</a></li>
-            <li><a>Cerveza</a></li>
-            <li><a>Agua fresca</a></li>
-            <li><a>Horchata</a></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div> -->
+       </div>
       </div>
-    </div>
   </div>
 
   <div class="regular-container">
