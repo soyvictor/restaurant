@@ -1,8 +1,6 @@
-// Specific CSS for your home-page
-
 .info {
   text-align: center;
-  padding: 0 0;
+  padding: 0px 0px;
 }
 
 .banner-container {
@@ -96,7 +94,6 @@
 
 
 
-
 // Media Queries
 
 @media only screen and (min-width: 992px) {
@@ -133,36 +130,10 @@
     height: calc(.5 * (100vh - 75px))
   }
 
-
-
-
-
-  // .heading-menu {
-  //   height: calc(.3 * (100vh - 75px));
-  //   display: flex;
-  //   align-items: flex-end;
-  // }
-
-  // .regular-container.mobileMenu {
-  //   margin-top: 0px;
-  //   // height: calc(.3 * (100vh - 75px));
-  //   // display: flex;
-  //   // align-items: flex-end;
-  // }
-
-  //   .regular-container.mobileInfo {
-  //   margin-bottom: 0px;
-  //   // height: calc(.3 * (100vh - 75px));
-  //   // display: flex;
-  //   // align-items: flex-end;
-  // }
-
-
-
-
+  .info {
+    padding: 0px 16px;
+    text-align: left;
+  }
 }
-
-
-
 
 
