@@ -83,6 +83,16 @@ ul.categories-list li:hover {
   cursor: pointer;
 }
 
+.fa-sliders-h {
+  display: none;
+}
+
+.category-title-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
 
 // Media Queries
 
@@ -132,4 +142,21 @@ ul.categories-list li:hover {
   .menu-item-left {
     padding-left: 0px !important;
   }
+
+
+  .menu-category h4 {
+    // background-color: hsla(116, 0%, 90%, 1.00);
+  }
+
+  .category-title-heading {
+    background-color: hsla(116, 0%, 90%, 1.00);
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+  }
+
+  .fa-sliders-h {
+  display: block;
+}
 }
