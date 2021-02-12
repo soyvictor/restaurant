@@ -8,7 +8,7 @@
 .banner-container {
   // background-color: rgba(72, 24, 24, 1.00);
   // background-color: hsla(360, 55%, 40%, 1.00);
-  background: linear-gradient( rgba(60, 60, 60, 0.4), rgba(60, 60, 60, 0.1) ), url("https://res.cloudinary.com/vc334/image/upload/v1613017774/jeswin-thomas-w_zvJS2-KWI-unsplash_ysofkk.jpg");
+  background: linear-gradient( rgba(60, 60, 60, 0.5), rgba(60, 60, 60, 0.1) ), url("https://res.cloudinary.com/vc334/image/upload/v1613017774/jeswin-thomas-w_zvJS2-KWI-unsplash_ysofkk.jpg");
   // background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -27,15 +27,17 @@
   font-family: "lato";
   font-weight: 400;
   text-shadow: 2px 2px 1px black;
+  display: none;
 }
 
 .banner-container p.banner-heading {
-  font-size: 5rem;
+  font-size: 4rem;
   // border-top: 3px solid white;
   // border-bottom: 3px solid white;
   display: inline-block;
   color: white;
   text-shadow: 2px 2px 1px black;
+  display: none;
 }
 
 .contact {
@@ -98,7 +100,23 @@
 // Media Queries
 
 @media only screen and (min-width: 992px) {
+  .main-content {
+    position: relative;
+    top: 0px;
+    z-index: 0;
+  }
 
+  .categories-heading-section {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    top: 0;
+    padding-top: 10px;
+    background: white;
+    z-index: 1000000;
+  }
 }
 
 @media only screen and (max-width: 992px) {

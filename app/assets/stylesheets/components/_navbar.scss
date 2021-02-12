@@ -60,7 +60,7 @@ header.header-mobile {
   position: fixed;
   z-index: 1;
   background-color: hsla(115, 100%, 100%, 1.00);
-  display: none;
+  display: block;
   align-items: center;
 }
 
@@ -73,7 +73,7 @@ header.header-mobile nav {
 }
 
 .hamburger-button {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .hamburger-button:hover {
@@ -157,18 +157,38 @@ lewagon template navbar DO NOT USE
 
 
 
-// Media Queries
+// // Media Queries
 
 @media only screen and (min-width: 992px) {
-  header.header-desktop {
+  // header.header-desktop {
+  //   display: block;
+  // }
+
+  #main-logo {
+    position: absolute;
+    left: 90px;
+    font-size: 1.6rem;
+  }
+
+  .header-mobile nav {
+    width: 96%;
+    margin: 0 auto;
+  }
+
+  header.header-mobile {
+    width: 100%;
+    position: static;
+    // z-index: 1;
+    background-color: hsla(115, 100%, 100%, 1.00);
     display: block;
+    align-items: center;
   }
 }
 
-@media only screen and (max-width: 992px) {
-  header.header-mobile {
-    display: block;
-  }
-}
+// @media only screen and (max-width: 992px) {
+//   header.header-mobile {
+//     display: block;
+//   }
+// }
 
 

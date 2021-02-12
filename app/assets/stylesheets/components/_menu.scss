@@ -55,7 +55,7 @@ ul.categories-list {
 
 hr {
   margin: 0;
-  padding-top: 8px;
+  padding: 0;
 }
 
 ul.categories-list li {
@@ -79,4 +79,24 @@ ul.categories-list li.categoryNameHighlight {
 ul.categories-list li:hover {
   border-bottom: 3px solid hsla(360, 72%, 48%, 1.00);
   cursor: pointer;
+}
+
+
+// Media Queries
+
+
+
+@media only screen and (max-width: 992px) {
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  ul.categories-list {
+    display: none;
+  }
+
+  .menu-shopping-cart {
+    display: none;
+  }
 }
