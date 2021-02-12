@@ -1,6 +1,27 @@
-.shopping-cart-container {
-  position: relative;
-  top: 65px;
-  width: 45vw;
-  margin: 0 auto;
+.cart-container {
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.shopping-cart-card {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid hsla(116, 0%, 85%, 1.00);
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.checkout-section {
+  border: 1px solid hsla(116, 0%, 81%, 1.00);
+  flex-grow: 2;
+  margin: 0px 24px;
+  padding: 20px;
+  height: 50vh;
+}
+
+.checkout-section-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+
