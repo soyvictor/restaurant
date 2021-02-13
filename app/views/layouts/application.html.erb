@@ -44,6 +44,7 @@
      <div class="modalInside" style="position: relative;">
         <ul>
           <% if user_signed_in? %>
+            <li>Account</li>
             <li>Order History</li>
             <li><%= link_to "Admin", user_admins_path(current_user) %></li>
             <li><%= link_to "Log out", destroy_user_session_path, method: :delete%></li>
