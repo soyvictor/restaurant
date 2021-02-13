@@ -1,4 +1,4 @@
-<div class="regular-container" >
+<div class="regular-container">
   <h3>Your Cart</h3>
   <div class="cart-container">
     <div style="border: 1px solid hsla(116, 0%, 81%, 1.00); padding: 24px; flex-grow: 2">
@@ -8,7 +8,7 @@
             <%= cl_image_tag user_item.item.photo.key, crop: :fill, gravity: :center, size: "75x75", class: ""%>
           </div>
           <div style="flex-grow: 1; padding: 0px 16px;">
-            <h5><%= user_item.item.name %></h5>
+            <p style="font-size: 1.1rem; font-weight: 600"><%= user_item.item.name %></p>
             <% unless user_item.options.length == 0 %>
             <p>Options:
               <% user_item.options.each do |option| %>
@@ -18,11 +18,11 @@
               </p>
             <% end %>
             <% if user_item.special_instructions.length > 0 %>
-              <p>Special Notes: <%= user_item.special_instructions %></p>
+              <p style="font-weight: 300; font-size: .9rem">Special Notes: <%= user_item.special_instructions %></p>
             <% end %>
           </div>
 
-          <div>
+          <div style="width: 20%;">
             <p><strong>Quantity</strong></p>
             <div style="display: flex;">
               <form class="quantity-list" action="<%= updateQuantity_user_item_path(user_item) %>" method="POST">
@@ -57,13 +57,15 @@
         <div>
           <h5>Order Summary</h5>
           <h5>Item(s) Subtotal</h5>
-          <h5>Order Total</h5>
+          <h5>Delivery Fee</h5>
+          <h5><strong>Order Total</strong></h5>
         </div>
 
         <div>
           <h5><%= @shoppingCartQuantity %> items</h5>
           <h5><%= @shoppingCartPriceCounter %></h5>
-          <h5><%= @shoppingCartPriceCounter %></h5>
+          <h5>Free</h5>
+          <h5><strong><%= @shoppingCartPriceCounter %></strong></h5>
         </div>
       </div>
 

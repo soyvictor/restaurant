@@ -16,12 +16,25 @@
   flex-grow: 2;
   margin: 0px 24px;
   padding: 20px;
-  height: 50vh;
+  height: fit-content;
 }
 
 .checkout-section-flex {
   display: flex;
   justify-content: space-between;
 }
+
+
+@media only screen and (max-width: 992px) {
+  .regular-container {
+    position: relative; top: 75px;
+  }
+}
+
+
+
+
+
+
 
 

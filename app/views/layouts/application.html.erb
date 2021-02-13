@@ -42,11 +42,15 @@
 
    <div class="modalOutside">
      <div class="modalInside" style="position: relative;">
-        <h1>hello</h1>
         <ul>
-          <li></li>
-
-          <li><a href="#order">Order</a></li>
+          <% if user_signed_in? %>
+            <li>Order History</li>
+            <li><%= link_to "Admin", user_admins_path(current_user) %></li>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete%></li>
+          <% else %>
+             <li><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+          <% end %>
+          <hr>
           <li><a href="#about-us">About Us</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>

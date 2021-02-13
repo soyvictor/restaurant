@@ -59,6 +59,7 @@ header.header-mobile {
   width: 100%;
   position: fixed;
   z-index: 1;
+  top: 0;
   background-color: hsla(115, 100%, 100%, 1.00);
   display: block;
   align-items: center;
@@ -182,6 +183,10 @@ lewagon template navbar DO NOT USE
     background-color: hsla(115, 100%, 100%, 1.00);
     display: block;
     align-items: center;
+  }
+
+  .modalInside {
+    width: 30vw;
   }
 }
 
