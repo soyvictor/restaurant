@@ -1,22 +1,60 @@
 // Declarations
 const categoryNameFirst = document.querySelector('.category-name');
-console.log(categoryNameFirst);
 const categoryNames = document.querySelectorAll('.category-name');
-let categorySelected = undefined;
+let categorySelected = categoryNames[0];  // Not sure if this is correct syntax
+const intersectionWatch = document.querySelectorAll('.intersection');
 
+const menuHeading = document.querySelector('#order');
 // Functions
+
+function conlog() {
+  console.log(menuHeading.getBoundingClientRect().top);
+}
+
+window.addEventListener('scroll', conlog);
+
+// function addHighlightIntersection(element) {
+//   categoryNames.forEach((name) => {
+//     name.classList.remove('categoryNameHighlight');
+//   });
+//   categoryNames.forEach((name) => {
+//     if (name.innerText === element) {
+//       name.classList.add('categoryNameHighlight');
+//       categorySelected = name;
+//     }
+//   });
+// }
+
+
+// function obCallBack(payload) {
+//   if(payload[0].intersectionRatio === 1) {
+//     console.log('Changed Categories');
+//     const element = payload[0].target.id;
+//     console.log(element);
+//     addHighlightIntersection(element);
+//   }
+
+// }
+
+// const ob = new IntersectionObserver(obCallBack, { threshold: 1 });
+
+// intersectionWatch.forEach((category) => {
+//   ob.observe(category)
+// });
+
+
+
 
 function addHighlight(e) {
   categoryNames.forEach((name) => {
     name.classList.remove('categoryNameHighlight');
   });
   e.target.classList.add('categoryNameHighlight');
-  categorySelected = e.target
+  categorySelected = e.target;
 }
 
 
 function underline(e) {
-  console.log('highlighting!');
   categoryNames.forEach((name) => {
     name.classList.remove('categoryNameHighlight');
   });

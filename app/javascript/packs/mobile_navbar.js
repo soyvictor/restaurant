@@ -1,6 +1,5 @@
 const hamburgerButton = document.querySelector('.hamburger-button');
 const modalOutside = document.querySelector('.modalOutside');
-console.log(hamburgerButton);
 
 function openModalOutside() {
     if(modalOutside.matches('.open')) {
