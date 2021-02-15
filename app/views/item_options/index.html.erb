@@ -1,0 +1,4 @@
+<% @item_options.each do |item_option| %>
+  <%= link_to item_option.name, edit_item_option_path(item_option) %>
+<% end %>
+<%= link_to "Create item option", new_item_option_path %>

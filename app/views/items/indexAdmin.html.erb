@@ -1,0 +1,4 @@
+<% @items.each do |item| %>
+  <%= link_to item.name, edit_item_path(item) %>
+<% end %>
+<%= link_to "Create item", new_item_path %>
