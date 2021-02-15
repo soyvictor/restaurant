@@ -12,6 +12,8 @@
 }
 
 .checkout-section {
+  position: sticky;
+  top: 0;
   border: 1px solid hsla(116, 0%, 81%, 1.00);
   flex-grow: 2;
   margin: 0px 24px;
