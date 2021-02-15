@@ -120,8 +120,8 @@ header.header-mobile nav {
   background: white;
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
   transform: translateX(-100vw);
-  transition: all 0.3s;
-  width: 60vw;
+  transition: all 0.5s;
+  // transition-timing-function: ease-in-out;
   height: 100vh;
   // display: flex;
   // flex-direction: column;
@@ -130,6 +130,17 @@ header.header-mobile nav {
   // text-align: left;
   // color: black;
   // overflow: scroll;
+  padding: 32px;
+}
+
+.modalInside ul {
+  font-size: 1.1rem;
+}
+
+.modalInside li {
+  text-decoration: none;
+  list-style-type: none;
+  line-height: 2.2rem;
 }
 
 .modalOutside.open .modalInside {
@@ -186,7 +197,7 @@ lewagon template navbar DO NOT USE
   }
 
   .modalInside {
-    width: 30vw;
+    width: 24vw;
   }
 }
 
