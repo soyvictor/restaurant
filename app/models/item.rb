@@ -6,4 +6,7 @@ class Item < ApplicationRecord
   has_many :item_options, dependent: :destroy
   monetize :price_cents
 
+  validates :name, presence: true, uniqueness: true
+  validates :price, presence: true
+
 end

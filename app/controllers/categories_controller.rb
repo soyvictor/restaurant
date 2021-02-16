@@ -13,7 +13,11 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @category.user = current_user
-    @category.save
+    if @category.save
+      redirect_to items_path
+    else
+      render :new
+    end
   end
 
   def edit
