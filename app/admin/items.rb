@@ -1,5 +1,4 @@
 ActiveAdmin.register Item do
-
   # form partial: 'item_form'
   form do |f|
     f.semantic_errors # shows errors on :base
@@ -31,22 +30,28 @@ ActiveAdmin.register Item do
       end
     end
 
-    permit_params :name, :description, :price, :photo, :category_id, :user_id
-
-
     index do
       selectable_column
       column :id
       column :name
       column :description
-      column :user
+      column :user, sortable: :user_id
       column :created_at
       column :updated_at
       column :category
-      column :price
+      column :price, sortable: :price_cents
       column :photo
+      column "photo" do |item|
+        if item.photo.present?
+          cl_image_tag item.photo.key, crop: :fill, gravity: :center, size: "50x50"
+        # link_to post.title, admin_post_path(post)
+        end
+      end
       actions
     end
+
+    permit_params :name, :description, :price, :photo, :category_id, :user_id
+
   end
 
   # form do |f|

@@ -28,11 +28,11 @@ ActiveAdmin.register ItemOption do
       selectable_column
       column :id
       column :name
-      column :user
-      column :item
+      column :user, sortable: :user_id
+      column :item, sortable: :item_id
       column :created_at
       column :updated_at
-      column :price
+      column :price, sortable: :price_cents
       actions
     end
 

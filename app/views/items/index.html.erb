@@ -58,7 +58,7 @@
           <ul>
             <div class="menu-grid">
               <% category.items.each do |item| %>
-                <a class="item" data-photo="<%= item.photo.key %>" data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>" data-prices="<%= item.item_options.map do |item_option| humanized_money(item_option.price) end %>">
+                <a class="item" <% if item.photo.present? %> data-photo="<%= item.photo.key %>" <% end %> data-name="<%= item.name %>" data-description="<%= item.description %>" data-price="<%= humanized_money(item.price) %>" data-id="<%= item.id %>" data-options="<%= item.item_options.map do |item_option| item_option.name end %>" data-prices="<%= item.item_options.map do |item_option| humanized_money(item_option.price) end %>">
                   <div class="menu-item">
                     <div class="menu-item-left">
                       <div>
@@ -67,7 +67,9 @@
                       </div>
                       <p style="font-size: 14px; margin-bottom: 0px;"><strong>$<%= item.price %></strong></p>
                     </div>
-                    <%= cl_image_tag item.photo.key, crop: :fill, gravity: :center, class: "photo-menu"%>
+                    <% if item.photo.present? %>
+                      <%= cl_image_tag item.photo.key, crop: :fill, gravity: :center, class: "photo-menu"%>
+                    <% end %>
                   </div>
                 </a>
               <% end %>
