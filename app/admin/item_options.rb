@@ -1,6 +1,44 @@
 ActiveAdmin.register ItemOption do
 
-  permit_params :name, :price_cents, :item_id, :user_id
+  form do |f|
+    f.semantic_errors # shows errors on :base
+    # f.inputs          # builds an input field for every attribute
+    f.inputs do
+      f.input :user
+      f.input :item
+      f.input :name
+      f.input :price
+    end
+    f.actions         # adds the 'Submit' and 'Cancel' buttons
+  end
+
+  show do
+      attributes_table do
+        row :name
+        row :user
+        row :item
+        row :created_at
+        row :updated_at
+        row :price
+        active_admin_comments
+      end
+    end
+
+    index do
+      selectable_column
+      column :id
+      column :name
+      column :user
+      column :item
+      column :created_at
+      column :updated_at
+      column :price
+      actions
+    end
+
+    permit_params :name, :price, :item_id, :user_id
+
+  end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -17,4 +55,4 @@ ActiveAdmin.register ItemOption do
   #   permitted
   # end
 
-end
+

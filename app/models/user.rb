@@ -12,6 +12,6 @@ class User < ApplicationRecord
 
   # For Active Admin
   def name
-    "#{id} - #{email}"
+    "#{email}"
   end
 end
