@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :contacts, only: [:new, :edit, :update, :create]
+  resources :addresses, only: [:new, :edit, :update, :create]
 
 
 

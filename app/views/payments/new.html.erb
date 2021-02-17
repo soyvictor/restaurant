@@ -1,19 +1,18 @@
-<!-- app/views/payments/new.html.erb -->
+<div class="" style="display: flex; width: 90%; margin: 0px auto;">
+  <div style="width: 50%;">
+    <h1>Checkout Summary</h1>
+    <div>
+      <h5><i class="fas fa-user"></i>Order Contact Info</h5>
+      <%= render 'contact_form' %>
+    </div>
 
-
-
-<div class="regular-container-admin">
-  <h1>Checkout Summary</h1>
-  <div style="width: 40%;">
-    <h5><i class="fas fa-user"></i>Order Contact Info</h5>
-    <%= render 'contact_form' %>
+    <div>
+      <h5><i class="fas fa-map-pin"></i>Delivery Info</h5>
+      <%= render 'address_form' %>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="row py-4">
-    <div class="col">
-      <h1>Checkout summary</h1>
+<div style="width: 40%">
       <p>Purchase of <strong><%= @order.quantity %> food items</strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
       <button id="pay" class="btn btn-primary">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
@@ -26,6 +25,21 @@
           });
         });
       </script>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+<div class="container">
+  <div class="row py-4">
+    <div class="col">
+
     </div>
   </div>
 </div>

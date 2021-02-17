@@ -1,0 +1,12 @@
+      <%= simple_form_for [@address] do |f| %>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">
+        <%= f.input :street_address, input_html: { class: 'search-fields' }  %>
+        <%= f.input :city, input_html: { class: 'search-fields' } %>
+        <%= f.input :state, input_html: { class: 'search-fields' } %>
+        <%= f.input :colony, input_html: { class: 'search-fields' } %>
+        <%= f.input :zipcode, input_html: { class: 'search-fields' } %>
+      </div>
+      <div class="mb-5">
+      <%= f.submit "Add item", class: "btn search-button-styled mt-2 form-control", style: "width: 100%;" %>
+      </div>
+    <% end %>
