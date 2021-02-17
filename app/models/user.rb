@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :item_options, dependent: :destroy
   has_many :contacts
+  
+  def name
+    "#{email}"
+  end
 end
