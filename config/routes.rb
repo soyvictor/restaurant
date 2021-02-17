@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :contacts, only: [:new, :edit, :update, :create]
+
 
 
   resources :orders, only: [:show, :create] do
