@@ -1,59 +1,56 @@
-ActiveAdmin.register ItemOption do
-  menu priority: 7
+ActiveAdmin.register Order do
+  menu priority: 2
   form do |f|
     f.semantic_errors # shows errors on :base
     # f.inputs          # builds an input field for every attribute
     f.inputs do
-      f.input :user
-      f.input :item
-      f.input :name
-      f.input :price
+      f.input :state
+      f.input :amount
     end
     f.actions         # adds the 'Submit' and 'Cancel' buttons
   end
 
   show do
       attributes_table do
-        row :name
+        row :state
+        row :amount
+        row :checkout_session_id
         row :user
-        row :item
         row :created_at
         row :updated_at
-        row :price
+        row :quantity
       end
         active_admin_comments
     end
 
     index do
       column :id
-      column :name
-      column :user, sortable: :user_id
-      column :item, sortable: :item_id
+      column :state
+      column :amount, sortable: :amount_cents
+      column :checkout_session_id
+      column :user
       column :created_at
       column :updated_at
-      column :price, sortable: :price_cents
+      column :quantity
       actions
     end
 
     batch_action :destroy, false
 
-    permit_params :name, :price, :item_id, :user_id
-
-  end
-
+    permit_params :state, :amount
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :user_id, :item_id, :price_cents
+  # permit_params :state, :amount_cents, :checkout_session_id, :user_id, :quantity
   #
   # or
   #
   # permit_params do
-  #   permitted = [:name, :user_id, :item_id, :price_cents]
+  #   permitted = [:state, :amount_cents, :checkout_session_id, :user_id, :quantity]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
 
-
+end

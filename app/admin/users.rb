@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-
+  menu priority: 9
   form do |f|
      f.inputs "Identity" do
        f.input :email
@@ -9,6 +9,8 @@ ActiveAdmin.register User do
      end
      f.actions
    end
+
+   batch_action :destroy, false
 
    permit_params :email, :admin
 

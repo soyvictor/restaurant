@@ -3,6 +3,7 @@ def authenticate_admin!
 end
 
 ActiveAdmin.setup do |config|
+  config.batch_actions = false
   # == Site Title
   #
   # Set the title that is displayed on the main layout

@@ -1,5 +1,6 @@
 ActiveAdmin.register Item do
   # form partial: 'item_form'
+  menu priority: 4
   form do |f|
     f.semantic_errors # shows errors on :base
     # f.inputs          # builds an input field for every attribute
@@ -26,8 +27,8 @@ ActiveAdmin.register Item do
         row :photo do |ad|
           cl_image_tag ad.photo.key, crop: :fill, gravity: :center, size: "200x200"
         end
-        active_admin_comments
       end
+           active_admin_comments
     end
 
     index do
@@ -40,7 +41,6 @@ ActiveAdmin.register Item do
       column :updated_at
       column :category
       column :price, sortable: :price_cents
-      column :photo
       column "photo" do |item|
         if item.photo.present?
           cl_image_tag item.photo.key, crop: :fill, gravity: :center, size: "50x50"
@@ -49,6 +49,8 @@ ActiveAdmin.register Item do
       end
       actions
     end
+
+    batch_action :destroy, false
 
     permit_params :name, :description, :price, :photo, :category_id, :user_id
 
