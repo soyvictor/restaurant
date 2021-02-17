@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :categories, dependent: :destroy
   has_many :item_options, dependent: :destroy
-
-  # For Active Admin
+  has_many :contacts
+  
   def name
     "#{email}"
   end
