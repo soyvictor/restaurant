@@ -22,8 +22,12 @@ Rails.application.routes.draw do
 
 
 
+
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
+    member do
+      post :addContact
+    end
   end
   resources :users, only: [:admin]
   resources :item_options, only: [:index, :new, :create, :edit, :update]

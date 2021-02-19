@@ -4,4 +4,6 @@ class PaymentsController < ApplicationController
     @contact = Contact.new
     @address = Address.new
   end
+
+
 end

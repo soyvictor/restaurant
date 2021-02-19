@@ -3,6 +3,25 @@ class OrdersController < ApplicationController
     @order = current_user.orders.find(params[:id])
   end
 
+  def addContact
+    @order = current_user.orders.where(state: "pending").find(params[:id])
+    @order.first_name = params[:first_name]
+    @order.last_name = params[:last_name]
+    @order.email = params[:email]
+    @order.phone = params[:phone]
+    @order.save!
+
+    if params[:saved]
+      @contact = Contact.new
+      @contact.first_name = params[:first_name]
+      @contact.last_name = params[:last_name]
+      @contact.email = params[:email]
+      @contact.phone = params[:phone]
+      @contact.user = current_user
+      @contact.save!
+    end
+  end
+
   def updateOrderQuantityAmount(order)
     order = Order.find(order.id)
     quantityCounter = 0
