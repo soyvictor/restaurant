@@ -1,0 +1,12 @@
+  <%= simple_form_for [@contact] do |f| %>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">
+    <%= f.input :first_name, input_html: { class: 'search-fields' }  %>
+    <%= f.input :last_name, input_html: { class: 'search-fields' } %>
+    <%= f.input :email, input_html: { class: 'search-fields' } %>
+    <%= f.input :phone, input_html: { class: 'search-fields' } %>
+    <%= f.input :saved, label: "Save contact info for future orders" %>
+  </div>
+  <div class="mb-5">
+  <%= f.submit "Add item", class: "btn search-button-styled mt-2 form-control", style: "width: 100%;" %>
+  </div>
+<% end %>
