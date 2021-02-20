@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
     @order = current_user.orders.where(state: "pending").find(params[:order_id])
     @contact = Contact.new
     @address = Address.new
+    @restaurant = Restaurante.first
   end
 
 

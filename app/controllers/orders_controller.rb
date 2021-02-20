@@ -9,6 +9,11 @@ class OrdersController < ApplicationController
     @order.last_name = params[:last_name]
     @order.email = params[:email]
     @order.phone = params[:phone]
+    @order.street_address = params[:street_address]
+    @order.city = params[:city]
+    @order.state_address = params[:state]
+    @order.colony = params[:colony]
+    @order.zipcode = params[:zipcode]
     @order.save!
 
     if params[:saved]

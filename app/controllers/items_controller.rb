@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
     @categories = @items.map do |item|
       item.category
     end.uniq
+    # @restaurant = Restaurant.first
   end
 
   def new
