@@ -11,6 +11,10 @@
   padding: 16px;
 }
 
+.shopping-cart-card:last-child {
+  border-bottom: none;
+}
+
 .checkout-section {
   position: sticky;
   top: 0;
