@@ -2,7 +2,7 @@
   <div style="width: 50%;">
     <h1>Checkout Summary</h1>
     <div>
-      <h5><i class="fas fa-user" style="margin-right: 8px;"></i>Delivery Or Pick Up?</h5>
+      <h5><i class="fas fa-motorcycle" style="margin-right: 8px;"></i>Delivery Or Pick Up?</h5>
       <form id="order-type-form" action="" style="margin-bottom: 20px;">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="exampleRadios" id="delivery" value="delivery" checked>
@@ -83,14 +83,19 @@
   </div>
 
 <div style="width: 40%">
-      <p>Purchase of <strong><%= @order.quantity %> food items</strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+      <p>Purchase of <strong><%= @order.quantity %> food items</strong> for <strong class="order-amount" data-amount="<%= @order.amount %>" data-delivery="<%= @restaurant.delivery_fee %>"><%= @order.amount %></strong></p>
       <button id="pay" class="btn btn-primary">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
         const paymentButton = document.getElementById('pay');
         const contactAddressForm = document.getElementById('contact-address-form');
         paymentButton.addEventListener('click', () => {
-          contactAddressForm.submit();
+          if ( contactAddressForm.checkValidity() ) {
+            contactAddressForm.submit();
+          } else {
+            contactAddressForm.reportValidity();
+            return;
+          }
           const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
           stripe.redirectToCheckout({
             sessionId: '<%= @order.checkout_session_id %>'
@@ -115,3 +120,6 @@
     </div>
   </div>
 </div>
+
+
+<%= javascript_pack_tag 'checkout_summary' %>
