@@ -50,12 +50,13 @@
 
 
 
-        <h5><i class="fas fa-map-pin" style="margin-right: 8px;"></i>Delivery Info</h5>
-
+        <h5><i class="fas fa-map-pin" style="margin-right: 8px;"></i><span class="delivery-info-heading">Delivery Info</span></h5>
+<fieldset class="address-fieldset">
         <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">
+
           <div class="form-group">
           <label for="street_address">Street Address</label>
-          <input class="form-control" type="text" id="street_address" name="street_address" required>
+          <input class="form-control" type="text" id="street_address" name="street_address">
         </div>
         <div class="form-group">
           <label for="city">City</label>
@@ -75,6 +76,7 @@
         </div>
 
         </div>
+        </fieldset>
       </form>
 
     </div>
@@ -83,7 +85,7 @@
   </div>
 
 <div style="width: 40%">
-      <p>Purchase of <strong><%= @order.quantity %> food items</strong> for <strong class="order-amount" data-amount="<%= @order.amount %>" data-delivery="<%= @restaurant.delivery_fee %>"><%= @order.amount %></strong></p>
+      <p>Purchase of <strong><%= @order.quantity %> food items</strong> for <strong class="order-amount" data-amount="<%= @order.amount %>" data-delivery="<%= @restaurant.delivery_fee %>"><%= @order.amount.to_i + @restaurant.delivery_fee.to_i %></strong></p>
       <button id="pay" class="btn btn-primary">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
