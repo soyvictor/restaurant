@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_000051) do
+ActiveRecord::Schema.define(version: 2021_02_22_222119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,16 +123,17 @@ ActiveRecord::Schema.define(version: 2021_02_20_000051) do
     t.string "state_address"
     t.string "colony"
     t.string "zipcode"
-    t.string "type"
+    t.string "order_type"
+    t.integer "subtotal_cents", default: 0, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "restaurantes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.integer "delivery_fee"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "delivery_fee_cents", default: 0, null: false
     t.index ["user_id"], name: "index_restaurantes_on_user_id"
   end
 
