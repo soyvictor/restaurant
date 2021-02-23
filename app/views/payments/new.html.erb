@@ -5,28 +5,30 @@
         <div style="">
           <h1>Checkout Summary</h1>
           <div>
-
-
-
-            <form id="contact-address-form" action="<%= addContact_order_path(params[:order_id]) %>" method="POST">
+            <h5><i class="fas fa-motorcycle" style="margin-right: 8px;"></i>Delivery Or Pick Up?</h5>
+            <form action="<%= setOrderType_order_path(params[:order_id]) %>" id="order-type-form" method="POST">
               <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
-              <h5><i class="fas fa-motorcycle" style="margin-right: 8px;"></i>Delivery Or Pick Up?</h5>
-              <div id="order-type-form">
+              <div >
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="order_type" id="delivery" value="delivery" checked>
+                  <input class="form-check-input" type="radio" name="order_type" id="delivery" value="delivery" <% if @order.order_type == 'delivery'%> checked <% end %>>
                   <label class="form-check-label" for="delivery">
                     Delivery
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="order_type" id="pickup" value="pickup">
+                  <input class="form-check-input" type="radio" name="order_type" id="pickup" value="pickup" <% if @order.order_type == 'pickup'%> checked <% end %>>
                   <label class="form-check-label" for="pickup">
                     Pickup
                   </label>
                 </div>
 
               </div>
+            </form>
+            <form id="contact-address-form" action="<%= addContact_order_path(params[:order_id]) %>" method="POST">
+              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+
                     <h5><i class="fas fa-user" style="margin-right: 8px;"></i>Order Contact Info</h5>
 
               <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">

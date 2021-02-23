@@ -3,9 +3,34 @@ class OrdersController < ApplicationController
     @order = current_user.orders.find(params[:id])
   end
 
-  def addContact
+  def setOrderType
     @order = current_user.orders.where(state: "pending").find(params[:id])
     @order.order_type = params[:order_type]
+    if params[:order_type] == "delivery"
+      @order.amount = @order.subtotal + Restaurante.first.delivery_fee
+    else
+      @order.amount = @order.subtotal
+    end
+    @order.save!
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: "Test Order",
+        amount: @order.amount_cents,
+        currency: 'mxn',
+        quantity: 1
+      }],
+      success_url: order_url(@order),
+      cancel_url: order_url(@order)
+    )
+
+    @order.update(checkout_session_id: session.id)
+    redirect_to new_order_payment_path(@order)
+  end
+
+  def addContact
+    @order = current_user.orders.where(state: "pending").find(params[:id])
     @order.first_name = params[:first_name]
     @order.last_name = params[:last_name]
     @order.email = params[:email]
@@ -30,27 +55,6 @@ class OrdersController < ApplicationController
       @contact.user = current_user
       @contact.save!
     end
-
-    if params[:order_type] == "delivery"
-      @order.amount = @order.subtotal + Restaurante.first.delivery_fee
-    else
-      @order.amount = @order.subtotal
-    end
-    @order.save!
-
-    session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      line_items: [{
-        name: "Test Order",
-        amount: @order.amount_cents,
-        currency: 'mxn',
-        quantity: 1
-      }],
-      success_url: order_url(@order),
-      cancel_url: order_url(@order)
-    )
-
-    @order.update(checkout_session_id: session.id)
   end
 
   def updateOrderQuantityAmount(order)

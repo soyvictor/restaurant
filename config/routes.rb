@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :payments, only: :new
     member do
       post :addContact
+      post :setOrderType
     end
   end
   resources :users, only: [:admin]

@@ -5,6 +5,7 @@ const deliveryInfoHeading = document.querySelector('.delivery-info-heading');
 const pickupLocationDiv = document.querySelector('.pickup-location');
 
 function updateCheckoutPrice(e) {
+  e.currentTarget.submit();
   if (e.target.value === 'pickup') {
     orderAmount.innerText = orderAmount.dataset.amount;
     addressFieldset.disabled = true;
@@ -18,6 +19,7 @@ function updateCheckoutPrice(e) {
     addressFieldset.disabled = false;
         pickupLocationDiv.innerHTML = '';
   }
+
 }
 
 orderType.addEventListener('change', updateCheckoutPrice);
