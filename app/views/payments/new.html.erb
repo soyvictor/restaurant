@@ -2,18 +2,14 @@
   <h3>Your Cart</h3>
   <div class="cart-container">
     <div style="border: 1px solid hsla(116, 0%, 81%, 1.00); padding: 24px; flex-grow: 2">
-        <div style="">
-          <h1>Checkout Summary</h1>
-          <div>
-
-            <form id="contact-address-form" action="<%= addContact_order_path(params[:order_id]) %>" method="POST">
-              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-
-
-                    <h5><i class="fas fa-user" style="margin-right: 8px;"></i>Order Contact Info</h5>
-
-              <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">
-                <div class="form-group">
+      <div>
+        <h1>Checkout Summary</h1>
+        <div>
+          <form id="contact-address-form" action="<%= addContact_order_path(params[:order_id]) %>" method="POST">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <h5><i class="fas fa-user" style="margin-right: 8px;"></i>Order Contact Info</h5>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">
+              <div class="form-group">
                 <label for="first_name">First Name</label>
                 <input class="form-control" type="text" id="first_name" name="first_name" required <% if current_user.contacts.length > 0 %>value="<%= current_user.contacts[0].first_name  %> " <% end %>>
               </div>
@@ -35,120 +31,89 @@
                   <label class="form-check-label" for="save_contact">Save contact info for future orders</label>
                 </div>
               <% end %>
-              </div>
-
-
+            </div>
 
             <% if @order.order_type == 'delivery' %>
               <h5><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Delivery Info</span></h5>
-              <div class="pickup-location"></div>
-      <fieldset class="address-fieldset">
-              <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">
 
-                <div class="form-group">
-                <label for="street_address">Street Address</label>
-                <input class="form-control" type="text" id="street_address" name="street_address">
-              </div>
-              <div class="form-group">
-                <label for="city">City</label>
-                <input class="form-control" type="text" id="city" name="city" required>
-              </div>
-              <div class="form-group">
-                <label for="state">State</label>
-                <input class="form-control" type="text" id="state" name="state" required>
-              </div>
-              <div class="form-group">
-                <label for="colony">Colony</label>
-                <input class="form-control" type="text" id="colony" name="colony" required>
-              </div>
-              <div class="form-group">
-                <label for="zipcode">Zipcode</label>
-                <input class="form-control" type="text" id="zipcode" name="zipcode" required>
-              </div>
-
-              </div>
+              <fieldset class="address-fieldset">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">
+                  <div class="form-group">
+                    <label for="street_address">Street Address</label>
+                    <input class="form-control" type="text" id="street_address" name="street_address">
+                  </div>
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input class="form-control" type="text" id="city" name="city" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    <input class="form-control" type="text" id="state" name="state" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="colony">Colony</label>
+                    <input class="form-control" type="text" id="colony" name="colony" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="zipcode">Zipcode</label>
+                    <input class="form-control" type="text" id="zipcode" name="zipcode" required>
+                  </div>
+                </div>
               </fieldset>
-              <input type="submit">
-            </form>
-
+            <input type="submit">
+          </form>
           <% else %>
-          <h5><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Pickup Info</
+            <h5><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Pickup Info</span></h5>
             <p>Tortas Mr. Elorduy</p>
             <p>2849 Olive Ave.</p>
             <p>Fremont, CA 94539</p>
           <% end %>
-
-
-
-          </div>
-
-
         </div>
-
+      </div>
     </div>
 
     <div style="width: 40%">
-
-
       <div class="checkout-section">
-            <div class="checkout-section-flex">
-              <div>
-                <h5>Order Summary</h5>
-                <h5>Item(s) Subtotal</h5>
-                <h5>Delivery Fee</h5>
-                <h5><strong>Order Total</strong></h5>
-              </div>
+        <div class="checkout-section-flex">
+          <div>
+            <h5>Order Summary</h5>
+            <h5>Item(s) Subtotal</h5>
+            <h5>Delivery Fee</h5>
+            <h5><strong>Order Total</strong></h5>
+          </div>
 
-              <div>
-                <h5><%= @order.quantity %> items</h5>
-                <h5><%= @order.subtotal %></h5>
-                <% if @order.order_type == 'delivery' %>
-                  <h5><%= @restaurant.delivery_fee %></h5>
-                <% else %>
-                  <h5>pickup</h5>
-                <% end %>
-<!--                 <h5><strong class="order-amount" data-amount="<%= @order.subtotal %>" data-delivery="<%= @restaurant.delivery_fee %>"><%= @order.subtotal + @restaurant.delivery_fee %></strong></h5> -->
-<h5><strong><%= @order.amount %></strong></h5>
-              </div>
-            </div>
-
-
-          <button id="pay" class="btn btn-primary">Pay</button>
-          <script src="https://js.stripe.com/v3/"></script>
-          <script>
-            const paymentButton = document.getElementById('pay');
-            const contactAddressForm = document.getElementById('contact-address-form');
-            paymentButton.addEventListener('click', () => {
-              if ( contactAddressForm.checkValidity() ) {
-                contactAddressForm.submit();
-              } else {
-                contactAddressForm.reportValidity();
-                return;
-              }
-              const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-              stripe.redirectToCheckout({
-                sessionId: '<%= @order.checkout_session_id %>'
-              });
+          <div>
+            <h5><%= @order.quantity %> items</h5>
+            <h5><%= @order.subtotal %></h5>
+            <% if @order.order_type == 'delivery' %>
+              <h5><%= @restaurant.delivery_fee %></h5>
+            <% else %>
+              <h5>pickup</h5>
+            <% end %>
+            <h5><strong><%= @order.amount %></strong></h5>
+          </div>
+        </div>
+        <button id="pay" class="btn btn-primary">Pay</button>
+        <script src="https://js.stripe.com/v3/"></script>
+        <script>
+          const paymentButton = document.getElementById('pay');
+          const contactAddressForm = document.getElementById('contact-address-form');
+          paymentButton.addEventListener('click', () => {
+            if ( contactAddressForm.checkValidity() ) {
+              contactAddressForm.submit();
+            } else {
+              contactAddressForm.reportValidity();
+              return;
+            }
+            const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+            stripe.redirectToCheckout({
+              sessionId: '<%= @order.checkout_session_id %>'
             });
-          </script>
-
-
-    </div>
-
-
-
-
-
-
-    </div>
-
-
-
-
+          });
+        </script>
+      </div>
     </div>
   </div>
-
-
-
+</div>
 
 <%= javascript_pack_tag 'checkout_summary' %>
