@@ -1,9 +1,8 @@
 <div class="regular-container">
-  <h3>Your Cart</h3>
+  <h3>Checkout Summary</h3>
   <div class="cart-container">
     <div style="border: 1px solid hsla(116, 0%, 81%, 1.00); padding: 24px; flex-grow: 2">
       <div>
-        <h1>Checkout Summary</h1>
         <div>
           <form id="contact-address-form" action="<%= addContact_order_path(params[:order_id]) %>" method="POST">
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -60,7 +59,6 @@
                   </div>
                 </div>
               </fieldset>
-            <input type="submit">
           </form>
           <% else %>
             <h5><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Pickup Info</span></h5>
@@ -76,14 +74,14 @@
       <div class="checkout-section">
         <div class="checkout-section-flex">
           <div>
-            <h5>Order Summary</h5>
+            <h5><strong>Order Summary</strong></h5>
             <h5>Item(s) Subtotal</h5>
             <h5>Delivery Fee</h5>
             <h5><strong>Order Total</strong></h5>
           </div>
 
           <div>
-            <h5><%= @order.quantity %> items</h5>
+            <h5><%= pluralize @order.quantity, "item" %></h5>
             <h5><%= @order.subtotal %></h5>
             <% if @order.order_type == 'delivery' %>
               <h5><%= @restaurant.delivery_fee %></h5>
@@ -93,7 +91,7 @@
             <h5><strong><%= @order.amount %></strong></h5>
           </div>
         </div>
-        <button id="pay" class="btn btn-primary">Pay</button>
+        <button id="pay" class="btn btn-dark">Next: Pay</button>
         <script src="https://js.stripe.com/v3/"></script>
         <script>
           const paymentButton = document.getElementById('pay');

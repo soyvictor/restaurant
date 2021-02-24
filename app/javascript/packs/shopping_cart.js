@@ -35,7 +35,7 @@ function updateCheckoutPrice(e) {
     // deliveryInfoHeading.innerText = "Pickup Location"
     // pickupLocationDiv.innerHTML = '<p>Tortas Mr. Elorduy</p><p>2849 Olive Ave</p><p>Fremont, CA 94539</p>';
   } else {
-    deliveryFee.innerText = deliveryFee.dataset.delivery;
+    deliveryFee.innerText = `$${deliveryFee.dataset.delivery}`;
     orderTotal.innerText = (parseInt(deliveryFee.dataset.delivery, 10) + parseInt(orderTotal.dataset.subtotal, 10)).toFixed(2);
     // orderAmount.innerText = (parseInt(orderAmount.dataset.amount, 10) + parseInt(orderAmount.dataset.delivery, 10)).toFixed(2);
     // addressFieldset.classList.remove('pickup');
