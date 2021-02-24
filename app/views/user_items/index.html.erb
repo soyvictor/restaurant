@@ -1,5 +1,5 @@
 <div class="regular-container">
-  <h3>Your Cart</h3>
+  <h3>Cart</h3>
   <div class="cart-container">
     <div style="border: 1px solid hsla(116, 0%, 81%, 1.00); padding: 24px; flex-grow: 2">
       <% @shopping_cart.order("created_at asc").each do |user_item| %>
@@ -67,7 +67,7 @@
           </div>
 
           <div>
-            <h5><%= pluralize @shoppingCartQuantity, "item" %></h5>
+            <h5 class="strong"><%= pluralize @shoppingCartQuantity, "item" %></h5>
             <h5>$<%= @shoppingCartPriceCounter %></h5>
             <h5 class="delivery-fee" data-delivery="<%= @restaurant.delivery_fee %>">---</h5>
             <h5><strong>$</strong><strong class="order-total" data-subtotal="<%= @shoppingCartPriceCounter %>"><%= @shoppingCartPriceCounter %></strong></h5>

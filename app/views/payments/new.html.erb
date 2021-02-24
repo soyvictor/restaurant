@@ -1,12 +1,12 @@
 <div class="regular-container">
-  <h3>Checkout Summary</h3>
+  <h3>Checkout</h3>
   <div class="cart-container">
     <div style="border: 1px solid hsla(116, 0%, 81%, 1.00); padding: 24px; flex-grow: 2">
       <div>
-        <div>
+        <div class="strong">
           <form id="contact-address-form" action="<%= addContact_order_path(params[:order_id]) %>" method="POST">
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-            <h5><i class="fas fa-user" style="margin-right: 8px;"></i>Order Contact Info</h5>
+            <h5 class="strong"><i class="fas fa-user" style="margin-right: 8px;"></i>Order Contact Info</h5>
             <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">
               <div class="form-group">
                 <label for="first_name">First Name</label>
@@ -33,7 +33,7 @@
             </div>
 
             <% if @order.order_type == 'delivery' %>
-              <h5><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Delivery Info</span></h5>
+              <h5 class="strong"><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Delivery Info</span></h5>
 
               <fieldset class="address-fieldset">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">
@@ -61,7 +61,7 @@
               </fieldset>
           </form>
           <% else %>
-            <h5><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Pickup Info</span></h5>
+            <h5 class="strong"><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Pickup Info</span></h5>
             <p>Tortas Mr. Elorduy</p>
             <p>2849 Olive Ave.</p>
             <p>Fremont, CA 94539</p>
@@ -81,7 +81,7 @@
           </div>
 
           <div>
-            <h5><%= pluralize @order.quantity, "item" %></h5>
+            <h5 class="strong"><%= pluralize @order.quantity, "item" %></h5>
             <h5><%= @order.subtotal %></h5>
             <% if @order.order_type == 'delivery' %>
               <h5><%= @restaurant.delivery_fee %></h5>
