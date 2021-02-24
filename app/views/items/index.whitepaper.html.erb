@@ -309,3 +309,10 @@ sessions new
         <option class="quantity-form-option" value="12">12</option>
         <option class="quantity-form-option" value="13">13</option>
         <option class="quantity-form-option" value="14">14</option>
+
+
+
+        <%= setOrderType_order_path(params[:order_id]) %>
+
+        <% if @order.order_type == 'delivery'%> checked <% end %>
+        <% if @order.order_type == 'pickup'%> checked <% end %>

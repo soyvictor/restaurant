@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
   end
 
   def setOrderType
-    @order = current_user.orders.where(state: "pending").find(params[:id])
+    # @order = current_user.orders.where(state: "pending").find(params[:id])
+    @order = current_user.orders.where(state: "pending").find(78)
     @order.order_type = params[:order_type]
     if params[:order_type] == "delivery"
       @order.amount = @order.subtotal + Restaurante.first.delivery_fee
@@ -12,21 +13,23 @@ class OrdersController < ApplicationController
       @order.amount = @order.subtotal
     end
     @order.save!
+    redirect_to user_items_path
 
-    session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      line_items: [{
-        name: "Test Order",
-        amount: @order.amount_cents,
-        currency: 'mxn',
-        quantity: 1
-      }],
-      success_url: order_url(@order),
-      cancel_url: order_url(@order)
-    )
+    # session = Stripe::Checkout::Session.create(
+    #   payment_method_types: ['card'],
+    #   line_items: [{
+    #     name: "Test Order",
+    #     amount: @order.amount_cents,
+    #     currency: 'mxn',
+    #     quantity: 1
+    #   }],
+    #   success_url: order_url(@order),
+    #   cancel_url: order_url(@order)
+    # )
 
-    @order.update(checkout_session_id: session.id)
-    redirect_to new_order_payment_path(@order)
+    # @order.update(checkout_session_id: session.id)
+    # redirect_to new_order_payment_path(@order)
+
   end
 
   def addContact
@@ -58,6 +61,7 @@ class OrdersController < ApplicationController
   end
 
   def updateOrderQuantityAmount(order)
+    restaurant = Restaurante.first
     order = Order.find(order.id)
     quantityCounter = 0
     priceCounter = 0
@@ -68,9 +72,15 @@ class OrdersController < ApplicationController
       priceCounter += (ItemOption.find(option).price * user_item.quantity)
       end
     end
+    if order.order_type == 'delivery'
+      order.amount = priceCounter + restaurant.delivery_fee
+    else
+      order.amount = priceCounter
+    end
+
     order.quantity = quantityCounter
     order.subtotal = priceCounter
-    order.amount = priceCounter
+    # order.amount = priceCounter
     order.save!
 
     session = Stripe::Checkout::Session.create(
@@ -96,6 +106,8 @@ class OrdersController < ApplicationController
         user_item.order = order
         user_item.save!
       end
+      order.order_type = params[:order_type]
+      order.save!
       updateOrderQuantityAmount(order)
     else
       order = Order.new
@@ -105,6 +117,8 @@ class OrdersController < ApplicationController
         user_item.order = order
         user_item.save!
       end
+      order.order_type = params[:order_type]
+      order.save!
       updateOrderQuantityAmount(order)
     end
   end

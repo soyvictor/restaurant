@@ -25,13 +25,14 @@
           <div style="width: 20%;">
             <p><strong>Quantity</strong></p>
             <div style="display: flex;">
-              <form class="quantity-list" action="<%= updateQuantity_user_item_path(user_item) %>" method="POST">
+              <form class="quantity-list" action="<%= updateQuantity_user_item_path(user_item) %>" method="POST" data-remote="true">
                 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
                 <select name="modalQuantity">
                   <% (1..100).each do |i| %>
                     <option class="quantity-form-option" value="<%= i %>"><%= i %></option>
                   <% end %>
                 </select>
+                <input type="submit" class="quant-button" style="display: none;">
               </form>
               <p><%= link_to 'Delete', user_item_path(user_item), method: :delete, data: { confirm: "Are you sure?" }, html_input: { }, style: "padding-left: 8px; font-size: .8rem; text-decoration: underline" %></p>
             </div>
@@ -42,29 +43,54 @@
     </div>
 
     <div class="checkout-section">
+      <h5><i class="fas fa-motorcycle" style="margin-right: 8px;"></i>Delivery Or Pick Up?</h5>
+      <form action="<%= orders_path %>" id="order-type-form" method="POST">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+        <div >
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="order_type" id="delivery" value="delivery" required  >
+            <label class="form-check-label" for="delivery">
+              Delivery
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="order_type" id="pickup" value="pickup" >
+            <label class="form-check-label" for="pickup">
+              Pickup
+            </label>
+          </div>
+
+        </div>
+        <input type="submit" style="display:none" class="order-type-button">
+
+      <hr style="margin-bottom: 16px">
       <div class="checkout-section-flex">
         <div>
           <h5>Order Summary</h5>
           <h5>Item(s) Subtotal</h5>
-          <!-- <h5><strong>Order Total</strong></h5> -->
+          <h5>Delivery Fee</h5>
+          <h5><strong>Order Total</strong></h5>
         </div>
 
         <div>
           <h5><%= @shoppingCartQuantity %> items</h5>
           <h5><%= @shoppingCartPriceCounter %></h5>
-          <!-- <h5><strong><%= @shoppingCartPriceCounter %></strong></h5> -->
+          <h5 class="delivery-fee" data-delivery="<%= @restaurant.delivery_fee %>">---</h5>
+          <h5><strong class="order-total" data-subtotal="<%= @shoppingCartPriceCounter %>"><%= @shoppingCartPriceCounter %></strong></h5>
         </div>
       </div>
 
 
+
+
           <% if current_user.user_items.where(state: "pending").length > 0 %>
-          <%= form_tag orders_path do %>
-        <!--     <%= hidden_field_tag "shopping_cart_total", @shopping_cart_total.to_i %> -->
-            <%= submit_tag 'Next: Checkout', class: 'btn btn-primary', style: "width: 100%;" %>
-          <% end %>
+        <input type="submit" value="Next: Checkout" class="btn btn-primary next-checkout-button" style="width: 100%;">
           <% else %>
           <h1>You have not added any items to your shopping cart!</h1>
           <% end %>
+
+          </form>
 
     </div>
 

@@ -1,5 +1,7 @@
 class UserItemsController < ApplicationController
   def index
+    # @order = current_user.orders.where(state: "pending").find(78)
+    @restaurant = Restaurante.first
     @shopping_cart = UserItem.where(user: current_user, state: "pending")
     @shoppingCartPriceCounter = 0
     @shoppingCartQuantity = 0

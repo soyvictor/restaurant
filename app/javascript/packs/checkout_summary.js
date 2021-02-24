@@ -3,6 +3,7 @@ const orderAmount = document.querySelector('.order-amount');
 const addressFieldset = document.querySelector('.address-fieldset');
 const deliveryInfoHeading = document.querySelector('.delivery-info-heading');
 const pickupLocationDiv = document.querySelector('.pickup-location');
+const deliveryFee = document.querySelector('.delivery-fee');
 
 function updateCheckoutPrice(e) {
   e.currentTarget.submit();
