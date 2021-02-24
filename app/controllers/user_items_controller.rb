@@ -1,6 +1,7 @@
 class UserItemsController < ApplicationController
+
+  before_action :set_user_item, only: [:destroy, :updateQuantity]
   def index
-    # @order = current_user.orders.where(state: "pending").find(78)
     @restaurant = Restaurante.first
     @shopping_cart = UserItem.where(user: current_user, state: "pending")
     @shoppingCartPriceCounter = 0
@@ -12,13 +13,6 @@ class UserItemsController < ApplicationController
         @shoppingCartPriceCounter += (ItemOption.find(option).price * user_item.quantity)
       end
     end
-    # if shopping_cart = current_user.orders.find_by(state: "pending")
-    #   @shopping_cart_total = shopping_cart.amount
-    #   @shopping_cart_quantity = shopping_cart.quantity
-    # else
-    #   @shopping_cart_total = 0
-    #   @shopping_cart_quantity = 0
-    # end
   end
 
   def new
@@ -84,7 +78,6 @@ class UserItemsController < ApplicationController
   end
 
   def destroy
-    @user_item = UserItem.find(params[:id])
     if @user_item.state = "pending"
       @user_item.destroy
     # no need for app/views/restaurants/destroy.html.erb
@@ -93,10 +86,15 @@ class UserItemsController < ApplicationController
   end
 
   def updateQuantity
-    @user_item = UserItem.find(params[:id])
     @user_item.quantity = params["modalQuantity"]
     @user_item.save!
     redirect_to user_items_path
+  end
+
+  private
+
+  def set_user_item
+    @user_item = UserItem.find(params[:id])
   end
 
 end
