@@ -33,7 +33,7 @@
             </div>
 
             <% if @order.order_type == 'delivery' %>
-              <h5 class="strong"><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Delivery Info</span></h5>
+              <h5 class="strong"><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Delivery Info</span><span style="font-size: .8rem; margin-left: 8px; color: red;"><%= link_to "Order for pickup instead?", orders_path(order_type: 'pickup'), method: :post, class: "" %></span></h5>
 
               <fieldset class="address-fieldset">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 16px">
@@ -61,7 +61,7 @@
               </fieldset>
           </form>
           <% else %>
-            <h5 class="strong"><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Pickup Info</span></h5>
+            <h5 class="strong"><i class="fas fa-map-pin" style="margin-right: 8px;margin-top: 24px;"></i><span class="delivery-info-heading">Pickup Info</span><span style="font-size: .8rem; margin-left: 8px; color: red;"><%= link_to "Order for delivery instead?", orders_path(order_type: 'delivery'), method: :post, class: "" %></span></h5>
             <p>Tortas Mr. Elorduy</p>
             <p>2849 Olive Ave.</p>
             <p>Fremont, CA 94539</p>
