@@ -14,12 +14,15 @@ function doSomething(form) {
 }
 
 function setDefaultQuantity(card) {
-  const formOptions = card.querySelectorAll('.quantity-form-option');
-  formOptions.forEach((option) => {
-    if (option.value === card.dataset.quant) {
-      option.selected = true;
-    }
-  });
+  // const formOptions = card.querySelectorAll('.quantity-form-option');
+  const formOpt = card.querySelector('[value=card.dataset.quant]');
+  formOpt.selected = true;
+  // [data-foo="value"]
+  // formOptions.forEach((option) => {
+  //   if (option.value === card.dataset.quant) {
+  //     option.selected = true;
+  //   }
+  // });
   const quantityDropDown = card.querySelector('.quantity-list');
   quantityDropDown.addEventListener('change', (e) => doSomething(e.currentTarget));
 }
