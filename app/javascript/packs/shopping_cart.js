@@ -15,7 +15,7 @@ function doSomething(form) {
 
 function setDefaultQuantity(card) {
   // const formOptions = card.querySelectorAll('.quantity-form-option');
-  const formOpt = card.querySelector('[value=card.dataset.quant]');
+  const formOpt = card.querySelector(`[value="${card.dataset.quant}"]`);
   formOpt.selected = true;
   // [data-foo="value"]
   // formOptions.forEach((option) => {
