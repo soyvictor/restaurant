@@ -9,7 +9,7 @@ const menuBox = document.querySelector('.menu-items');
 const intersectionWatch = document.querySelectorAll('.intersection');
 let options = {
   root: null,
-  rootMargin: "-50% 0px -50% 0px",
+  rootMargin: "-40% 0px -60% 0px",
   // rootMargin: "-200px 0px 100px 0px",
   // threshold: 0.01
 }
