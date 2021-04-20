@@ -1,6 +1,10 @@
 <div class="regular-container">
+  <% if current_user.user_items.where(state: "pending").length < 1 %>
+    <h1>Your shopping cart is empty.</h1>
+  <% else %>
   <h3>Cart</h3>
   <div class="cart-container">
+
     <div style="border: 1px solid hsla(116, 0%, 81%, 1.00); padding: 24px; flex-grow: 2">
       <% @shopping_cart.order("created_at asc").each do |user_item| %>
         <div class="shopping-cart-card" data-quant="<%= user_item.quantity %>">
@@ -76,12 +80,11 @@
 
         <% if current_user.user_items.where(state: "pending").length > 0 %>
           <input type="submit" value="Next: Checkout" class="btn btn-dark next-checkout-button">
-        <% else %>
-          <h1>You have not added any items to your shopping cart!</h1>
         <% end %>
       </form>
     </div>
   </div>
+  <% end %>
 </div>
 
 
