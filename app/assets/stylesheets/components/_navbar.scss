@@ -197,14 +197,23 @@ lewagon template navbar DO NOT USE
   }
 
   .modalInside {
-    width: 24vw;
+    width: 250px;
   }
 }
 
-// @media only screen and (max-width: 992px) {
-//   header.header-mobile {
-//     display: block;
-//   }
-// }
+@media only screen and (max-width: 992px) {
+  // header.header-mobile {
+  //   display: block;
+  // }
+  .modalInside {
+    width: 50vw;
+    font-size: .5rem;
+  }
+
+  .modalInside li {
+    width: 50vw;
+    font-size: 1rem;
+  }
+}
 
 

@@ -130,9 +130,24 @@
     height: calc(.5 * (100vh - 75px))
   }
 
+  .regular-container {
+    padding: 0px 16px;
+  }
+
   .info {
+    margin-top: 0px;
     padding: 0px 16px;
     text-align: left;
+  }
+
+  .map {
+    width: 100vw;
+    margin: 16px 0px;
+  }
+
+  .restaurant-info {
+    position: relative;
+    top: 75px;
   }
 }
 
