@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :item_options, dependent: :destroy
   has_many :contacts
   has_many :addresses
-  belongs_to :restaurante
+  belongs_to :restaurante, optional: true
 
   def name
     "#{email}"
