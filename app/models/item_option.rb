@@ -4,7 +4,7 @@ class ItemOption < ApplicationRecord
   has_many :user_items
   monetize :price_cents
   validates :name, presence: true
-  before_save { name.capitalize! }
+  # before_save { name.capitalize! }
 
   validates :name, presence: true
   validates :price, presence: true
