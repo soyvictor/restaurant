@@ -17,7 +17,7 @@
             <p>Options:
               <% user_item.options.each do |option| %>
                 <% itemOption = ItemOption.find(option) %>
-                <%= itemOption.name %>
+                <%= itemOption.name %>,
               <% end %>
               </p>
             <% end %>
