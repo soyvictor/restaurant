@@ -122,13 +122,14 @@ function openModal() {
     currentItem = el;
     modalInner.scrollTop = 0;
     const itemOptionsArray = JSON.parse(el.dataset.options);
+    console.log(itemOptionsArray);
     if (itemOptionsArray.length > 0) {
       optionsTitle.insertAdjacentHTML('afterbegin', '<h5>Options</h5>')
     };
     optionPrices = JSON.parse(el.dataset.prices);
     let optionPriceCount = 0;
     itemOptionsArray.forEach((option) => {
-      optionsSection.insertAdjacentHTML('afterbegin', `<div style="display: flex; justify-content: space-between; align-items: center;"><div><input class="options-checked" id=${option} type="checkbox" name="options[]" value=${option} data-prices2="${optionPrices[optionPriceCount]}"><label class="modal-form-label" for=${option}>${option}</label></div>+${optionPrices[optionPriceCounter]}</div>`)
+      optionsSection.insertAdjacentHTML('afterbegin', `<div style="display: flex; justify-content: space-between; align-items: center;"><div><input class="options-checked" id="${option}" type="checkbox" name="options[]" value="${option}" data-prices2="${optionPrices[optionPriceCount]}"><label class="modal-form-label" for=${option}>${option}</label></div>+${optionPrices[optionPriceCounter]}</div>`)
       optionPriceCounter += 1;
       optionPriceCount += 1;
     });

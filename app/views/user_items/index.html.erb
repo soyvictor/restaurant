@@ -40,7 +40,11 @@
               </form>
               <p><%= link_to 'Delete', user_item_path(user_item), method: :delete, data: { confirm: "Are you sure?" }, html_input: { }, style: "padding-left: 8px; font-size: .8rem; text-decoration: underline" %></p>
             </div>
-            <p>Subtotal: $<%= user_item.quantity * user_item.item.price %></p>
+            <% itemOptionSubtotal = 0 %>
+            <% user_item.options.each do |option| %>
+            <% itemOptionSubtotal += ItemOption.find(option).price %>
+            <% end %>
+            <p>Subtotal: $<%= user_item.quantity * (user_item.item.price + itemOptionSubtotal) %></p>
           </div>
         </div>
       <% end %>
