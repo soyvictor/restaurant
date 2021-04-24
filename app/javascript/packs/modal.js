@@ -58,7 +58,8 @@ function openModal() {
     }, seconds);
   }
 
-  function addOrder() {
+  function addOrder(e) {
+    // e.preventDefault();
     modalSubmitButtonText.setAttribute("value", `Added!`);
     resetModal(700);
   }

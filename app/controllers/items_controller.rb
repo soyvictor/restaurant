@@ -2,10 +2,26 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
   before_action :set_item, only: [:edit, :update]
   def index
+
+    if user_signed_in? && current_user.user_items.where(state: "pending")
+      itemsCount = 0
+      current_user.user_items.where(state: "pending").each do |item|
+        itemsCount += item.quantity
+      end
+      @shopping_cart_count = itemsCount
+    else
+      @shopping_cart_count = 0
+    end
+
     @items = Item.all
     @categories = @items.map do |item|
       item.category
     end.uniq
+
+    respond_to do |format|
+          format.html
+          format.json { render json: { user_items: @shopping_cart_count } }
+        end
     # @restaurant = Restaurant.first
   end
 

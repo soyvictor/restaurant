@@ -13,6 +13,10 @@ class UserItemsController < ApplicationController
         @shoppingCartPriceCounter += (ItemOption.find(option).price * user_item.quantity)
       end
     end
+    respond_to do |format|
+          format.html
+          format.json { render json: { user_items: @shoppingCartQuantity } }
+        end
   end
 
   def new
@@ -61,9 +65,7 @@ class UserItemsController < ApplicationController
         @user_item.options << ItemOption.find_by(name: option).id.to_i
       end
     end
-     if @user_item.save!
-      redirect_to root_path
-     end
+     @user_item.save!
       # if current_user.orders.find_by(state: "pending")
       #   current_order = current_user.orders.find_by(state: "pending")
       #   @user_item.order = current_order
