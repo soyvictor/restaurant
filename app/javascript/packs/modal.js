@@ -50,7 +50,7 @@ function openModal() {
 
   function resetModal(seconds) {
     setTimeout(function(){
-      document.location.reload();
+      // document.location.reload();
       closeModal();
       updateButtonText();
       modalCounter.innerText = counter;

@@ -9,7 +9,12 @@
       <% @shopping_cart.order("created_at asc").each do |user_item| %>
         <div class="shopping-cart-card" data-quant="<%= user_item.quantity %>">
           <div>
+            <% if user_item.item.photo.present? %>
             <%= cl_image_tag user_item.item.photo.key, crop: :fill, gravity: :center, size: "75x75", class: ""%>
+            <% else %>
+            <div style="width: 75px; height: 75px;">
+            </div>
+            <% end %>
           </div>
           <div style="flex-grow: 1; padding: 0px 16px;">
             <p style="font-size: 1.1rem; font-weight: 600"><%= user_item.item.name %></p>

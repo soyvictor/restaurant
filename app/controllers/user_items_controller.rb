@@ -1,6 +1,6 @@
 class UserItemsController < ApplicationController
-
   before_action :set_user_item, only: [:destroy, :updateQuantity]
+
   def index
     @restaurant = Restaurante.first
     @shopping_cart = UserItem.where(user: current_user, state: "pending")
@@ -36,6 +36,9 @@ class UserItemsController < ApplicationController
   # end
 
   def create
+    if user_signed_in? == false
+      redirect_to new_user_session_path
+    end
     if params["options"]
       theOptions = params["options"]
       theOptionsArray = theOptions.map do |option| ItemOption.find_by(name: option).id end
@@ -58,7 +61,9 @@ class UserItemsController < ApplicationController
         @user_item.options << ItemOption.find_by(name: option).id.to_i
       end
     end
-    @user_item.save!
+     if @user_item.save!
+      redirect_to root_path
+     end
       # if current_user.orders.find_by(state: "pending")
       #   current_order = current_user.orders.find_by(state: "pending")
       #   @user_item.order = current_order
