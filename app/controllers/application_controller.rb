@@ -5,13 +5,13 @@ class ApplicationController < ActionController::Base
   private
 
   def set_counter
-    itemsCount = 0
     if user_signed_in? && current_user.user_items.where(state: "pending")
-      current_user.user_items.where(state: "pending").each do |item|
-        itemsCount += item.quantity
+      @cart_count = current_user.user_items.where(state: "pending").reduce(0) do |sum,item|
+        sum + item.quantity
       end
+    else
+      @cart_count = 0
     end
-    @cart_count = itemsCount
   end
 end
 
